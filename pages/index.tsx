@@ -2,8 +2,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { useAction } from '../hook/useAction'
+import { useTypedSelector } from '../hook/useTypedSelector'
 
 const Home: NextPage = () => {
+  const { toggleMenu } = useAction()
+  const mobMenu = useTypedSelector(state => state.app.visibleMobileMenu)
+
   return (
     <div className={styles.container}>
       <Head>
