@@ -1,12 +1,10 @@
-import {AppActionEnums} from "../store/redux-enum";
-
 export interface AppState {
-	visibleMobileMenu: boolean
+  visibleMobileMenu: boolean
 }
 
 interface MobileAppAction {
-	type: AppActionEnums.MOBILE_NAVIGATION_MENU;
-	payload: boolean;
+  type: string;
+  payload: boolean;
 }
 
 export type AppAction = MobileAppAction

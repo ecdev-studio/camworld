@@ -2,8 +2,10 @@ import type {NextPage} from 'next'
 import Head from 'next/head'
 import {gql, useQuery} from '@apollo/client'
 import styles from '../styles/Home.module.css'
-import {useAction} from '../hook/useAction'
 import {useTypedSelector} from '../hook/useTypedSelector'
+
+import {store} from "../store";
+import {toggleMenu} from "../store/action-creator/global-action-creator";
 
 export const TEST_QUERY = gql`
     query {
@@ -14,13 +16,11 @@ export const TEST_QUERY = gql`
 `
 
 const Home: NextPage = () => {
-	const {toggleMenu} = useAction()
+	store.dispatch(toggleMenu(true))
 	const mobMenu = useTypedSelector(state => state.app.visibleMobileMenu)
 
 	const {loading, error, data} = useQuery(TEST_QUERY)
-	console.log(loading)
-	console.log(error)
-	console.log(data)
+
 
 	return (
 		<div className={styles.container}>
