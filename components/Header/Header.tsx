@@ -63,12 +63,11 @@ const Header: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = ({men
               <Link href="/">
                 <a className={styles.nav__link}>Home</a>
               </Link>
-
             </li>
             {
               menuArray&&menuArray.length!==0&&menuArray.map((item, index) => {
-                return <li className={styles.nav__item}>
-                  <Link href={item.slug} key={index}>
+                return <li className={styles.nav__item} key={index}>
+                  <Link href={item.slug}>
                     <a className={styles.nav__link}>{item.name}</a>
                   </Link>
                 </li>
@@ -80,7 +79,6 @@ const Header: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = ({men
           <li className={styles.nav__button}>
             <Link
               href="/cart"
-
             >
               <a className={`${styles.nav__link} ${styles.image}`}>
                 <svg className={styles.icon} width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -93,7 +91,6 @@ const Header: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = ({men
                   1 > 0 && (<span className={styles.icon__counter}>{1}</span>)
                 }
               </a>
-
             </Link>
           </li>
           <div className={mobMenu ? `${styles.mobile} ${styles.active}` : styles.mobile} onClick={showMobileMenu}
