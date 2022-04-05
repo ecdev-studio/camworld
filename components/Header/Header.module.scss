@@ -1,0 +1,261 @@
+@import "../../styles/config";
+@import "../../styles/mixins";
+
+.section{
+  background-color: $white;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: .5s ease-in, .5s ease-in-out;
+  border-bottom: 1px solid #E4E4E4;
+
+}
+.section.hide{
+  transform: translate(0, -26px);
+}
+
+.top{
+  background-color: $black;
+  width: 100%;
+  padding: 9px 100px;
+  line-height: 1;
+  transition: .5s ease-in, .5s ease-in-out;
+  @include media(md) {
+    padding: 9px 16px;
+  }
+
+  &__information {
+    font-size: 0.875rem;
+    color: $white;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 1600px) {
+      justify-content: center;
+    }
+
+  }
+
+  &__title {
+    color: $grey;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 500;
+    @media (max-width: 1600px) {
+      display: none;
+    }
+  }
+
+  &__text {
+    padding: 0 2rem;
+    @include media(md) {
+      padding: unset;
+    }
+    @include media(xs) {
+      font-size: 0.75rem;
+    }
+  }
+
+  &__line {
+    object-fit: contain;
+    max-width: 108px;
+    width: 100%;
+    height: 4px;
+    @include media(lg) {
+      display: none;
+    }
+  }
+}
+.top.hide{
+  @include media(sm) {
+    padding: 8px 16px;
+  }
+  @media (max-width: 680px) {
+    padding: 0 16px;
+  }
+}
+.inner{
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo{
+  height: auto;
+  min-height: 41px;
+  max-width: 12.5rem;
+
+  @include media(md) {
+    padding: 1rem 0;
+  }
+
+  @include media(xs) {
+    max-width: 8rem;
+  }
+}
+
+.nav {
+  @include media(md) {
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__item {
+    height: 100%;
+    position: relative;
+    margin: 0 1.5rem;
+
+    @include media(xs) {
+      margin: 0 .5rem;
+    }
+
+    &:last-child {
+      margin-left: 1.5rem;
+      margin-right: 0;
+
+      @include media(xs) {
+        margin-left: .5rem;
+      }
+    }
+
+    &:first-child {
+      margin-left: 0;
+      margin-right: 1.5rem;
+
+      @include media(xs) {
+        margin-right: .5rem;
+      }
+    }
+  }
+
+  &__button {
+    margin-left: 1.5rem;
+  }
+
+  &__link {
+    font-weight: 500;
+    text-transform: capitalize;
+    color: $black;
+    transition: .3s ease-in, .3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.8rem .1rem;
+    position: relative;
+
+    &:hover {
+      color: $green
+    }
+
+  }
+  &__link.image{
+    position: relative;
+    padding: 0;
+
+    &:hover {
+      svg {
+        path {
+          fill: $greenHover;
+        }
+      }
+
+      span{
+        background: $greenHover;
+      };
+    }
+
+    svg {
+      path {
+        transition: .3s ease-in, .3s ease-in-out;
+      }
+    }
+
+    span {
+      transition: .3s ease-in, .3s ease-in-out;
+    }
+  }
+}
+.icon{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  &__counter{
+    background-color: $black;
+    color: $white;
+    border-radius: 50%;
+    padding: 2px 4px;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    line-height: 1;
+    font-size: 12px;
+  }
+}
+
+.mobile {
+  width: 22px;
+  height: 18px;
+  position: relative;
+  cursor: pointer;
+  display: none;
+  margin-left: 1.5rem;
+
+  @include media(md) {
+    display: inline-block;
+  }
+
+  span {
+    position: absolute;
+    border-radius: 2px;
+    transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+    width: 100%;
+    height: 2px;
+    transition-duration: 300ms;
+    background: $black;
+
+    &:nth-child(1) {
+      top: 0;
+      right: 0;
+    }
+
+    &:nth-child(2) {
+      top: 8px;
+      right: 0;
+      opacity: 1;
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+.mobile.active{
+    span {
+      &:nth-child(1) {
+        transform: rotate(45deg);
+        top: 7px;
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 7px;
+      }
+    }
+}
