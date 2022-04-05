@@ -10,9 +10,10 @@ import logoIcon from '../../public/images/Layout/logo.svg'
 import {store} from "../../store";
 import {toggleMenu} from "../../store/action-creator/global-action-creator";
 import {useTypedSelector} from "../../hook/useTypedSelector";
+import {ICategory} from "../../types/data-types";
 
 
-const Header: NextComponentType = () => {
+const Header: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = ({menuArray}) => {
   const [hideTop, setHideTop] = useState(false)
   const mobMenu = useTypedSelector(state => state.app.visibleMobileMenu)
   useEffect(() => {
@@ -20,10 +21,10 @@ const Header: NextComponentType = () => {
       window.pageYOffset > 100 ? setHideTop(true) : setHideTop(false)
     }
   }, []);
-
-  const showMobileMenu=()=>{
+  console.log(menuArray)
+  const showMobileMenu = () => {
     store.dispatch(toggleMenu(!mobMenu))
-    console.log(mobMenu)
+
   }
 
 
@@ -53,21 +54,29 @@ const Header: NextComponentType = () => {
 
       </div>
       <div className={styles.inner}>
-        <Link  href="/">
+        <Link href="/">
           <a className={styles.logo}>
             <Image src={logoIcon} alt="prim"/>
           </a>
         </Link>
         <nav className={styles.nav}>
-              <ul className={styles.nav__list}>
-                <li className={styles.nav__item}>
-                  <Link href="/">
-                    <a className={styles.nav__link}>Home</a>
+          <ul className={styles.nav__list}>
+            <li className={styles.nav__item}>
+              <Link href="/">
+                <a className={styles.nav__link}>Home</a>
+              </Link>
+
+            </li>
+            {
+              menuArray.map((item, index) => {
+                return <li className={styles.nav__item}>
+                  <Link href={item.slug} key={index}>
+                    <a className={styles.nav__link}>{item.name}</a>
                   </Link>
-                  {//linksRender
-                  }
                 </li>
-              </ul>
+              })
+            }
+          </ul>
         </nav>
         <ul className={styles.nav__list}>
           <li className={styles.nav__button}>
@@ -89,7 +98,7 @@ const Header: NextComponentType = () => {
 
             </Link>
           </li>
-          <div className={mobMenu?`${styles.mobile} ${styles.active}`:styles.mobile} onClick={showMobileMenu}
+          <div className={mobMenu ? `${styles.mobile} ${styles.active}` : styles.mobile} onClick={showMobileMenu}
                onKeyDown={showMobileMenu} role="button" tabIndex={0}>
             <span/>
             <span/>
@@ -98,7 +107,7 @@ const Header: NextComponentType = () => {
         </ul>
       </div>
     </header>
-  );
+);
 }
 
 export default Header
