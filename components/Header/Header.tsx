@@ -23,7 +23,6 @@ const Header: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = ({men
   }, []);
   const showMobileMenu = () => {
     store.dispatch(toggleMenu(!mobMenu))
-
   }
 
 
@@ -67,7 +66,7 @@ const Header: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = ({men
 
             </li>
             {
-              menuArray.map((item, index) => {
+              menuArray&&menuArray.length!==0&&menuArray.map((item, index) => {
                 return <li className={styles.nav__item}>
                   <Link href={item.slug} key={index}>
                     <a className={styles.nav__link}>{item.name}</a>
