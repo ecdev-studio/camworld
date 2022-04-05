@@ -3,6 +3,7 @@ import React, { ReactChildren} from 'react'
 import {useTypedSelector} from "../../hook/useTypedSelector";
 import Header from "../Header/Header";
 import {ICategory} from "../../types/data-types";
+import MobileMenu from "../Header/MobileMenu";
 
 const Layout: NextComponentType<{},{}, { menuArray:Array<ICategory> }> =
   ({ children,menuArray}) => {
@@ -13,6 +14,7 @@ const Layout: NextComponentType<{},{}, { menuArray:Array<ICategory> }> =
     <>
       <Header menuArray={menuArray}/>
       <main>
+        <MobileMenu menuArray={menuArray}/>
         {children}
       </main>
     </>

@@ -21,7 +21,6 @@ const Header: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = ({men
       window.pageYOffset > 100 ? setHideTop(true) : setHideTop(false)
     }
   }, []);
-  console.log(menuArray)
   const showMobileMenu = () => {
     store.dispatch(toggleMenu(!mobMenu))
 
