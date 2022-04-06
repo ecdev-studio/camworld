@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import styles from './Header.module.scss'
+import styles from './Header_.module.scss'
 import cartIcon from '../../public/images/Layout/ic_cart.svg'
 import headLineIcon from '../../public/images/Layout/head-line.svg'
 import logoIcon from '../../public/images/Layout/logo.svg'

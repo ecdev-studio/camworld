@@ -1,0 +1,50 @@
+@import "../../../styles/mixins";
+@import "../../../styles/config";
+
+.section {
+  min-height: 615px;
+  background: url("../../../public/images/banner/bg.png") no-repeat center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+
+  @include media(sm) {
+    min-height: unset;
+    padding: 55px 0;
+  }
+  @include media(xs) {
+    background: url("../../../public/images/banner/mobile-bg.png") no-repeat center;
+    min-height: 600px;
+    background-size: cover;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.flag {
+  color: $green;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.headline {
+  font-size: 3rem;
+  font-weight: 700;
+  color: $white;
+
+  span {
+    font-weight: 300;
+  }
+
+}
+
+.tagline {
+  max-width: 305px;
+  width: 100%;
+  margin-bottom: 88px;
+  color: $white;
+
+}

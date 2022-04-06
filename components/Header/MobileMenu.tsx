@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import {useTypedSelector} from "../../hook/useTypedSelector";
 import {ICategory} from "../../types/data-types";
-import styles from './MobileMenu.module.scss'
+import styles from './MobileMenu_.module.scss'
 import { useRouter } from 'next/router';
 const MobileMenu: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = ({menuArray}) => {
   const router = useRouter();

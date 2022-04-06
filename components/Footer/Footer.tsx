@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from './Footer.module.scss'
+import styles from './Footer_.module.scss'
 const Footer: NextComponentType = () => {
   return (
     <footer className={styles.section}>
