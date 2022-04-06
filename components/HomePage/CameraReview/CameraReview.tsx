@@ -1,5 +1,4 @@
 import styles from './CameraReview_.module.scss'
-import stylesGlobal from '../../../styles/Global_.module.scss'
 import Link from 'next/link'
 import {NextComponentType} from "next";
 
@@ -14,7 +13,7 @@ const CameraReview:NextComponentType = () => {
           and world-renowned Nikkor lenses.
         </p>
         <ul className={styles.list}>
-          <li className={`${styles.item} ${styles.item__left}`}>
+          <li className={`${styles.item} ${styles.item__right}`}>
             <div className={styles.information}>
               <span className={styles.name}>
                 DX Series Nikon D850
@@ -24,7 +23,7 @@ const CameraReview:NextComponentType = () => {
               </Link>
             </div>
           </li>
-          <li className={`${styles.item} ${styles.item__right}`}>
+          <li className={`${styles.item} ${styles.item__left}`}>
             <div className={styles.information}>
               <span className={styles.name}>
                 FX Series Nikon D610
