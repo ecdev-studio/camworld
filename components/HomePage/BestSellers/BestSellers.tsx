@@ -23,7 +23,7 @@ const CameraReview: NextComponentType = () => {
           <div className={styles.left}>
             <Link href='/cameras'>
               <a className={`${styles.item} ${styles.left__item}`}>
-                <Image src={item1} alt="item1"/>
+                <Image src={item1} alt="item1" layout='responsive'/>
                 <div className={styles.information}>
                   <p className={styles.tagline}>FX Flagship</p>
                   <p className={styles.name}>Nikon D6</p>
@@ -38,7 +38,7 @@ const CameraReview: NextComponentType = () => {
           <div className={styles.right}>
             <Link href='/cameras'>
               <a className={`${styles.item} ${styles.right__item}`}>
-                <Image src={item2} alt="item2"/>
+                <Image src={item2} alt="item2" layout='responsive'  />
                 <div className={styles.information}>
                   <p className={styles.tagline}>FX Professional</p>
                   <p className={styles.name}>Nikon D850</p>
@@ -50,7 +50,7 @@ const CameraReview: NextComponentType = () => {
             </Link>
             <Link href='/product/nikon-d5xqd'>
               <a className={`${styles.item} ${styles.right__item}`}>
-                <Image src={item3} alt="item3"/>
+                <Image src={item3} alt="item3" layout='responsive'/>
                 <div className={styles.information}>
                   <p className={styles.tagline}>FX Advanced Entry</p>
                   <p className={styles.name}>Nikon D5XQD</p>
@@ -62,7 +62,7 @@ const CameraReview: NextComponentType = () => {
             </Link>
             <Link href='/cameras' >
               <a className={`${styles.item} ${styles.right__item}`}>
-                <Image src={item4} alt="item4"/>
+                <Image src={item4} alt="item4" layout='responsive'/>
                 <div className={styles.information}>
                   <p className={styles.tagline}>FX Entry-Level</p>
                   <p className={styles.name}>Nikon D610</p>

@@ -86,7 +86,7 @@
 }
 
 .item {
-  display: flex;
+  display: block;
   position: relative;
 
   &:hover {
@@ -107,6 +107,8 @@
 
 .information {
   position: absolute;
+  top:0;
+  left: 0;
   transform: translate(22px, 22px);
 }
 
