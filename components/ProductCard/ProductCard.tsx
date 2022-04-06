@@ -4,7 +4,6 @@ import {IProduct} from "../../types/data-types";
 import Link from 'next/link'
 import Image from "next/image";
 const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}) => {
-  console.log(product)
   const addToCartHandler = () => {
 
   }
