@@ -3,7 +3,7 @@ import styles from '../styles/TextPage_.module.scss'
 import Layout from '../components/Layout/Layout'
 import { ICategory, IProduct } from '../types/data-types'
 import { NextPage } from 'next'
-import { useFetchQuery } from '../hook/fetch-hooks'
+import {FetchQuery} from "../hook/fetch-hooks";
 import { getCategoryQuery, getProductHomePageQuery } from '../GraphQL/Schemas'
 
 
@@ -338,8 +338,8 @@ const TermsPage: NextPage<PageProps> = (props) => {
 }
 
 export async function getStaticProps() {
-  const menuArray = await useFetchQuery(getCategoryQuery)
-  const products=await useFetchQuery(getProductHomePageQuery)
+  const menuArray = await FetchQuery(getCategoryQuery)
+  const products=await FetchQuery(getProductHomePageQuery)
   return {
     props: {
       menuArray: menuArray.data.getCategories,
