@@ -1,4 +1,4 @@
-import type {NextPage, NextPageContext} from 'next'
+import type {NextPage} from 'next'
 import Layout from "../components/Layout/Layout";
 import {ICategory, IProduct} from "../types/data-types";
 import Banner from "../components/HomePage/Banner/Banner";
@@ -6,7 +6,7 @@ import CameraReview from "../components/HomePage/CameraReview/CameraReview";
 import IncridibleShots from "../components/HomePage/IncridibleShots/IncridibleShots";
 import BestSellers from "../components/HomePage/BestSellers/BestSellers";
 import FeaturedProducts from "../components/HomePage/FeaturedProducts/FeaturedProducts";
-import {useFetchQuery} from "../hook/fetch-hooks";
+import {FetchQuery} from "../hook/fetch-hooks";
 import {getCategoryQuery, getProductHomePageQuery} from "../GraphQL/Schemas"
 type PageProps = {
   menuArray: Array<ICategory>
@@ -26,8 +26,8 @@ const Home: NextPage<PageProps> = (props) => {
 }
 
 export async function getStaticProps() {
-  const menuArray = await useFetchQuery(getCategoryQuery)
-  const products=await useFetchQuery(getProductHomePageQuery)
+  const menuArray = await FetchQuery(getCategoryQuery)
+  const products=await FetchQuery(getProductHomePageQuery)
   return {
     props: {
       menuArray: menuArray.data.getCategories,
