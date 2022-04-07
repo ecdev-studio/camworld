@@ -11,7 +11,7 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
     <>
       <Link href={product.slug}>
         <a className={styles.image_wrap}>
-          <img className={styles.image} src={'https://camworld.ecdevstudio.com'+product.image} alt={product.name}/>
+          <Image className={styles.image} src={'https://camworld.ecdevstudio.com'+product.image} width={180} height={180} alt={product.name}/>
         </a>
       </Link>
       {/*<Rating value={product.rating} text={`${product.numReviews}`} />*/}
