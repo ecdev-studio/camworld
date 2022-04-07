@@ -7,20 +7,37 @@ import styles from '../components/CategoryPage/CategoryPage_.module.scss'
 import CategoryTop from "../components/CategoryPage/CategoryTop";
 import CategoryFilter from "../components/CategoryPage/CategoryFilter";
 import CategoryProducts from "../components/CategoryPage/CategoryProducts";
+import Pagination from "../components/CategoryPage/Pagination";
+
+
 type PageProps = {
     menuArray: Array<ICategory>
-    products: Array<IProduct>
-    currentCategory:ICategory
+    products: {
+        rows: Array<IProduct>
+        count: number
+    }
+    categories: Array<ICategory>,
+    maxAndMinPrice: {
+        min: number,
+        max: number
+    }
+    currentCategory: ICategory
 }
-const Category: NextPage<PageProps> = (props) => {
-    console.log(props)
+const paginationLimit = 9
+const Category: NextPage<PageProps> = (
+    {menuArray, products, categories,maxAndMinPrice,currentCategory}) => {
+
+
     return (
-        <Layout menuArray={props.menuArray}>
+        <Layout menuArray={menuArray}>
             <section className={styles.section}>
                 <div className={styles.inner}>
-                    <CategoryTop name={props.currentCategory.name}/>
-                    <CategoryFilter/>
-                    <CategoryProducts/>
+                    <CategoryTop name={currentCategory.name}/>
+                    <div className={styles.content}>
+                        <CategoryFilter/>
+                        <CategoryProducts/>
+                        <Pagination limit={paginationLimit} count={products.count}/>
+                    </div>
                 </div>
             </section>
         </Layout>
@@ -34,13 +51,15 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ category:
     const currentCategory: ICategory = menuArray.find((x: ICategory) => x.name.toLowerCase() === params.category)
     const products = await FetchQueryWithProps(getProductsPrerender, {
         categoryId: currentCategory.id,
-        limit: 9
+        limit: paginationLimit
     })
     return {
         props: {
             menuArray: menuArray,
-            products: products.data.getProducts.rows,
-            currentCategory:currentCategory
+            products: products.data.getProducts,
+            categories: products.data.getCategory,
+            maxAndMinPrice: products.data.getMaxMinPrice,
+            currentCategory: currentCategory
         }
     }
 }

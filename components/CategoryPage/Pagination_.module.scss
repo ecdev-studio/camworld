@@ -1,0 +1,43 @@
+@import "../../styles/mixins";
+@import "../../styles/config";
+.section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid $border;
+  font-size: 16px;
+  line-height: 1;
+  min-width: 35px;
+
+
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.button.current {
+  font-weight: 600;
+}
+.svg {
+  max-width: 16px;
+  height: 16px;
+
+
+}
+.svg.first {
+  transform: rotate(180deg);
+}
