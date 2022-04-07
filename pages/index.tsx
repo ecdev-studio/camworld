@@ -8,6 +8,7 @@ import BestSellers from "../components/HomePage/BestSellers/BestSellers";
 import FeaturedProducts from "../components/HomePage/FeaturedProducts/FeaturedProducts";
 import {FetchQuery} from "../hook/fetch-hooks";
 import {getCategoryQuery, getProductHomePageQuery} from "../GraphQL/Schemas"
+
 type PageProps = {
   menuArray: Array<ICategory>
   products:Array<IProduct>
