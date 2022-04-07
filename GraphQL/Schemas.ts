@@ -30,3 +30,44 @@ export const getProductHomePageQuery = gql`
         }
     }
 `
+/*
+* Category pages
+ */
+export const getProductsPrerender = gql`
+    query getProductsAndGetCategory($categoryId:Int!, $limit:Int) {
+            getProducts(categoryId:$categoryId,limit:$limit) {
+                rows {
+                    id
+                    name
+                    image
+                    price
+                    rating
+                    numReviews
+                    slug
+                    category {
+                        name
+                        slug
+                    }
+                }
+                count
+            },
+            getCategory(id:$categoryId) {
+                taxonomies {
+                    name
+                    id
+                    subTaxonomies {
+                        taxonomyId
+                        name
+                        id
+                    }
+                }
+                id
+                name
+                slug
+            },
+            getMaxMinPrice(categoryId: $categoryId) {
+                min
+                max
+            },
+    },
+`

@@ -43,7 +43,7 @@ const CameraReview: NextComponentType = () => {
                   <p className={styles.tagline}>FX Professional</p>
                   <p className={styles.name}>Nikon D850</p>
                   <p className={styles.learnmore}>
-                    Learn More <Image src={greenIconArrow} layout='fill' width={700} height={500} className={styles.item__image} alt="icon arrow"/>
+                    Learn More <Image src={greenIconArrow} layout='fill'  className={styles.item__image} alt="icon arrow"/>
                   </p>
                 </div>
               </a>
@@ -55,7 +55,7 @@ const CameraReview: NextComponentType = () => {
                   <p className={styles.tagline}>FX Advanced Entry</p>
                   <p className={styles.name}>Nikon D5XQD</p>
                   <p className={styles.learnmore}>
-                    Learn More <Image src={greenIconArrow}  layout='responsive' width={700} height={500} className={styles.item__image} alt="icon arrow"/>
+                    Learn More <Image src={greenIconArrow}  layout='responsive'  className={styles.item__image} alt="icon arrow"/>
                   </p>
                 </div>
               </a>

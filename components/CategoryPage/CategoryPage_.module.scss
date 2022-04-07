@@ -1,0 +1,113 @@
+@import "../../styles/mixins";
+@import "../../styles/config";
+
+.section {
+}
+
+.inner {
+  @include container;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+
+  @include media(md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.sort {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    background: url("../../public/images/ic_arrow.svg") no-repeat;
+    background-size: contain;
+    height: 11px;
+    width: 8px;
+    right: 0;
+    transform: rotate(90deg);
+    z-index: -1;
+  }
+
+
+  @include media(md) {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  label {
+    font-weight: 500;
+    margin-right: 5px;
+  }
+}
+
+.select {
+  width: 165px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.list {
+  padding-top: 1rem;
+}
+
+
+.products__list {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 -.5rem 0.5rem;
+  width: 80%;
+  position: relative;
+
+  &--not-active {
+    opacity: .4;
+
+    &:after {
+      width: 100%;
+      content: '';
+      height: 100%;
+      position: absolute;
+    }
+  }
+
+  @include media(lg) {
+    width: 100%;
+
+  }
+  @include media(sm) {
+    margin: 0 0 0.5rem;
+  }
+}
+
+.products__item {
+  width: calc(33.3333% - 1rem);
+
+  @include media(lg) {
+    width: calc(50% - 1rem);
+  }
+
+  @include media(sm) {
+    width: 100%;
+  }
+}

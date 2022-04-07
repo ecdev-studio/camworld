@@ -1,0 +1,41 @@
+@import "../../styles/mixins";
+@import "../../styles/config";
+
+.section {
+  margin: 5px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.item {
+  font-size: 13px;
+  color: $black;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &:after {
+    content: '›';
+    margin: 0 5px;
+  }
+
+  &:last-child {
+    opacity: .8;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+
+  strong {
+    margin-left: 4px;
+  }
+}
+
