@@ -34,8 +34,8 @@ const Category: NextPage<PageProps> = (
                 <div className={styles.inner}>
                     <CategoryTop name={currentCategory.name}/>
                     <div className={styles.content}>
-                        <CategoryFilter/>
-                        <CategoryProducts/>
+                        {/*<CategoryFilter/>*/}
+                        <CategoryProducts products={products.rows}/>
                         <Pagination limit={paginationLimit} count={products.count}/>
                     </div>
                 </div>
