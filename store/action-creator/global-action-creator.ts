@@ -1,6 +1,5 @@
 import {AppActionEnums} from '../redux-enum'
 import {ICart} from "../../types/redux-types";
-import {useTypedSelector} from "../../hook/useTypedSelector";
 import {store} from "../index";
 
 export const toggleMenu = (visible: boolean) => {
