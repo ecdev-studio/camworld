@@ -1,0 +1,16 @@
+@import "../../styles/mixins";
+@import "../../styles/config";
+
+.rating {
+  padding: 1rem 1rem 0;
+  display: flex;
+
+  &__item {
+    width: 18px;
+    height: 16px;
+  }
+
+  &__count {
+    padding-left: 6px;
+  }
+}

@@ -1,7 +1,8 @@
-import styles from './ProductCard_.module.scss'
+import styles from './ProductCard_.module.scss';
 import {NextComponentType} from "next";
 import {IProduct} from "../../types/data-types";
-import Link from 'next/link'
+import Rating from "../Rating/Rating";
+import Link from 'next/link';
 import Image from "next/image";
 import {changeQuantity} from "../../store/action-creator/global-action-creator";
 import {store} from "../../store";
@@ -9,26 +10,32 @@ import {useMemo} from "react";
 
 
 const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}) => {
-  const addToCartHandler = () => {
-      const item = {
-          name: product.name,
-          image: product.image,
-          price: product.price,
-          id: product.id,
-          slug: product.slug,
-          quantity:1
-      }
-      store.dispatch(changeQuantity(item,1))
-  }
-    const memo= useMemo(() => {
+    const addToCartHandler = () => {
+        const item = {
+            name: product.name,
+            image: product.image,
+            price: product.price,
+            id: product.id,
+            slug: product.slug,
+            quantity: 1
+        }
+        store.dispatch(changeQuantity(item, 1))
+    }
+    return useMemo(() => {
         return (
             <>
                 <Link href={product.slug}>
                     <a className={styles.image_wrap}>
-                        <Image className={styles.image} src={'https://camworld.ecdevstudio.com'+product.image} width={180} height={180} alt={product.name}/>
+                        <Image
+                            className={styles.image}
+                            src={'https://camworld.ecdevstudio.com' + product.image}
+                            width={180}
+                            height={180}
+                            alt={product.name}
+                        />
                     </a>
                 </Link>
-                {/*<Rating value={product.rating} text={`${product.numReviews}`} />*/}
+                <Rating value={product.rating} text={`${product.numReviews}`} hideCountReviewers={false}/>
                 <Link href={product.slug}>
                     <a><h6 className={styles.title}>{product.name}</h6></a>
                 </Link>
@@ -43,8 +50,7 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
                 </div>
             </>
         )
-    }, [product.slug,product.image,product.slug,product.name,product.price,product])
-    return memo
+    }, [product.slug, product.image, product.slug, product.name, product.price, product])
 }
 
 export default ProductCard
