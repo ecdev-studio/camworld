@@ -6,7 +6,7 @@ import {ICategory} from "../../types/data-types";
 import MobileMenu from "../Header/MobileMenu";
 import Footer from "../Footer/Footer";
 
-const Layout: NextComponentType<{},{}, { menuArray:Array<ICategory> }> =
+const Layout: NextComponentType<{},{}, { children: React.ReactNode, menuArray:Array<ICategory> }> =
   ({ children,menuArray}) => {
 
   const mobMenu = useTypedSelector(state => state.app.visibleMobileMenu)
