@@ -73,13 +73,13 @@ const TermsPage: NextPage<PageProps> = (props) => {
               controversy, demand, right, obligation, liability, action and cause of action of every kind and nature, that
               has arisen or arises directly or indirectly out of, or that relates directly or indirectly to, the Site. If
               you are a California resident, you hereby waive California civil code section 1542 in connection with the
-              foregoing, which states: "a general release does not extend to claims which the creditor does not know or
+              foregoing, which states: &quot;a general release does not extend to claims which the creditor does not know or
               suspect to exist in his or her favor at the time of executing the release, which if known by him or her must
-              have materially affected his or her settlement with the debtor."</p>
+              have materially affected his or her settlement with the debtor.&quot;</p>
           </div>
           <div className={styles.information}>
             <h5>Disclaimers</h5>
-            <p>The site is provided on an "as-is" and "as available" basis, and company and our suppliers expressly
+            <p>The site is provided on an &quot;as-is&quot; and &quot;as available&quot; basis, and company and our suppliers expressly
               disclaim any and all warranties and conditions of any kind, whether express, implied, or statutory,
               including all warranties or conditions of merchantability, fitness for a particular purpose, title, quiet
               enjoyment, accuracy, or non-infringement. We and our suppliers make not guarantee that the site will meet
@@ -263,7 +263,7 @@ const TermsPage: NextPage<PageProps> = (props) => {
             <p><strong>Entire Terms. </strong>These Terms constitute the entire agreement between you and us regarding the
               use of the Site. Our failure to exercise or enforce any right or provision of these Terms shall not operate
               as a waiver of such right or provision. The section titles in these Terms are for convenience only and have
-              no legal or contractual effect. The word "including" means "including without limitation". If any provision
+              no legal or contractual effect. The word &quot;including&quot; means &quot;including without limitation&quot;. If any provision
               of these Terms is held to be invalid or unenforceable, the other provisions of these Terms will be
               unimpaired and the invalid or unenforceable provision will be deemed modified so that it is valid and
               enforceable to the maximum extent permitted by law. Your relationship to Company is that of an independent

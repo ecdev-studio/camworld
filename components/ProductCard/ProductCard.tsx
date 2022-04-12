@@ -10,47 +10,47 @@ import {useMemo} from "react";
 
 
 const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}) => {
-    const addToCartHandler = () => {
-        const item = {
-            name: product.name,
-            image: product.image,
-            price: product.price,
-            id: product.id,
-            slug: product.slug,
-            quantity: 1
-        }
-        store.dispatch(changeQuantity(item, 1))
-    }
-    return useMemo(() => {
-        return (
-            <>
-                <Link href={product.slug}>
-                    <a className={styles.image_wrap}>
-                        <Image
-                            className={styles.image}
-                            src={'https://camworld.ecdevstudio.com' + product.image}
-                            width={180}
-                            height={180}
-                            alt={product.name}
-                        />
-                    </a>
-                </Link>
-                <Rating value={product.rating} text={`${product.numReviews}`} hideCountReviewers={false}/>
-                <Link href={product.slug}>
-                    <a><h6 className={styles.title}>{product.name}</h6></a>
-                </Link>
-                <div className={styles.bottom}>
-                    <h5 className={styles.price}>
-                        <sup><small>$</small></sup>{product.price}</h5>
-                    <button onClick={() => addToCartHandler()} className={styles.button}>
-                        <div className={styles.icon_cart}></div>
-                        Add to Cart
-                    </button>
-                    <div className={styles.icon_cart}></div>
-                </div>
-            </>
-        )
-    }, [product.slug, product.image, product.slug, product.name, product.price, product])
+	return useMemo(() => {
+		const addToCartHandler = () => {
+			const item = {
+				name: product.name,
+				image: product.image,
+				price: product.price,
+				id: product.id,
+				slug: product.slug,
+				quantity: 1
+			}
+			store.dispatch(changeQuantity(item, 1))
+		}
+		return (
+			<>
+				<Link href={product.slug}>
+					<a className={styles.image_wrap}>
+						<Image
+							className={styles.image}
+							src={'https://camworld.ecdevstudio.com' + product.image}
+							width={180}
+							height={180}
+							alt={product.name}
+						/>
+					</a>
+				</Link>
+				<Rating value={product.rating} text={`${product.numReviews}`} hideCountReviewers={false}/>
+				<Link href={product.slug}>
+					<a><h6 className={styles.title}>{product.name}</h6></a>
+				</Link>
+				<div className={styles.bottom}>
+					<h5 className={styles.price}>
+						<sup><small>$</small></sup>{product.price}</h5>
+					<button onClick={() => addToCartHandler()} className={styles.button}>
+						<div className={styles.icon_cart}/>
+						Add to Cart
+					</button>
+					<div className={styles.icon_cart}/>
+				</div>
+			</>
+		)
+	}, [product])
 }
 
 export default ProductCard
