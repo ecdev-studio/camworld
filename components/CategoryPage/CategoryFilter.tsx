@@ -2,7 +2,7 @@ import {NextComponentType} from "next";
 import React, {useState} from "react";
 
 const CategoryFilter: NextComponentType<{}, {}, {}> = () => {
-    // const [viewPrice, setViewPrice] = useState(false);
+    const [viewPrice, setViewPrice] = useState(false);
     return (
         <div className="filter">
             {/*<div className={viewPrice ? 'filter__category filter__category--active' : 'filter__category'}>*/}

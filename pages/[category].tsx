@@ -2,12 +2,14 @@ import type {GetStaticPropsContext, NextPage} from 'next'
 import Layout from "../components/Layout/Layout";
 import {ICategory, IProduct} from "../types/data-types";
 import {FetchQuery, FetchQueryWithProps} from "../hook/fetch-hooks";
-import {getCategoryQuery, getProductsPrerender} from "../GraphQL/Schemas"
+import {getCategoryQuery, getProductsFilter, getProductsPrerender} from "../GraphQL/Schemas"
 import styles from '../components/CategoryPage/CategoryPage_.module.scss'
 import CategoryTop from "../components/CategoryPage/CategoryTop";
 import CategoryFilter from "../components/CategoryPage/CategoryFilter";
 import CategoryProducts from "../components/CategoryPage/CategoryProducts";
 import Pagination from "../components/CategoryPage/Pagination";
+import {useEffect, useState} from "react";
+import {useLazyQuery} from "@apollo/client";
 
 
 type PageProps = {
@@ -26,7 +28,18 @@ type PageProps = {
 const paginationLimit = 9
 const Category: NextPage<PageProps> = (
     {menuArray, products, categories,maxAndMinPrice,currentCategory}) => {
+    const [prod, setProd] = useState(products.rows);
+    const [getProducts, { data: dataSort, loading: dataLoading, error: dataError }] = useLazyQuery(getProductsFilter)
 
+    useEffect(() => {
+        getProducts().then()
+    }, [getProducts])
+
+    useEffect(() => {
+        if (dataSort && !dataLoading) {
+            console.log(dataSort.getProducts.rows);
+        }
+    }, [dataSort, dataLoading, dataError])
 
     return (
         <Layout menuArray={menuArray}>
@@ -34,8 +47,8 @@ const Category: NextPage<PageProps> = (
                 <div className={styles.inner}>
                     <CategoryTop name={currentCategory.name}/>
                     <div className={styles.content}>
-                        {/*<CategoryFilter/>*/}
-                        <CategoryProducts products={products.rows}/>
+                        <CategoryFilter/>
+                        <CategoryProducts products={prod}/>
                         <Pagination limit={paginationLimit} count={products.count}/>
                     </div>
                 </div>

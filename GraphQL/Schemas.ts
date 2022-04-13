@@ -71,3 +71,18 @@ export const getProductsPrerender = gql`
             },
     },
 `
+
+export const getProductsFilter = gql`
+  query ($categoryId: Int,$sort:sortItem,$subTaxonomy:[Int],$limit:Int,$offset:Int) {
+    getProducts(categoryId:$categoryId, sort:$sort,subTaxonomy:$subTaxonomy,limit:$limit,offset:$offset) {
+      rows {
+        name
+        image
+        price
+        rating
+        numReviews
+      }
+      count
+    }
+  }
+`
