@@ -12,7 +12,7 @@ import {useEffect, useState} from "react";
 import {useLazyQuery} from "@apollo/client";
 import {useTypedSelector} from "../hook/useTypedSelector";
 import {store} from "../store";
-import {changeFilter, toggleMenu} from "../store/action-creator/global-action-creator";
+import {changeFilter} from "../store/action-creator/global-action-creator";
 
 
 type PageProps = {
@@ -21,7 +21,7 @@ type PageProps = {
 		rows: Array<IProduct>
 		count: number
 	}
-	categories: Array<ICategory>,
+	category: ICategory,
 	maxAndMinPrice: {
 		min: number,
 		max: number
@@ -30,13 +30,10 @@ type PageProps = {
 }
 const paginationLimit = 9
 const Category: NextPage<PageProps> = (
-	{menuArray, products, categories, maxAndMinPrice, currentCategory}) => {
+	{menuArray, products, category, maxAndMinPrice, currentCategory}) => {
 	const [prod, setProd] = useState(products.rows);
 	const [getProducts, {data: dataSort, loading: dataLoading, error: dataError}] = useLazyQuery(getProductsFilter);
 	const filter = useTypedSelector(state => state.filter);
-
-	console.log(maxAndMinPrice);
-	console.log(categories);
 
 	useEffect(() => {
 		store.dispatch(changeFilter({ priceMin: maxAndMinPrice.min }))
@@ -58,7 +55,7 @@ const Category: NextPage<PageProps> = (
 				<div className={styles.inner}>
 					<CategoryTop name={currentCategory.name}/>
 					<div className={styles.content}>
-						<CategoryFilter maxPrice={maxAndMinPrice.max} minPrice={maxAndMinPrice.min} />
+						<CategoryFilter maxPrice={maxAndMinPrice.max} minPrice={maxAndMinPrice.min} category={category} />
 						<CategoryProducts products={prod}/>
 						<Pagination limit={paginationLimit} count={products.count}/>
 					</div>
@@ -81,7 +78,7 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ category:
 		props: {
 			menuArray: menuArray,
 			products: products.data.getProducts,
-			categories: products.data.getCategory,
+			category: products.data.getCategory,
 			maxAndMinPrice: products.data.getMaxMinPrice,
 			currentCategory: currentCategory
 		}

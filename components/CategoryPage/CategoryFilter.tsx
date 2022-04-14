@@ -4,15 +4,22 @@ import styles from './Filter_.module.scss'
 import {getTrackBackground, Range} from 'react-range';
 import {store} from "../../store";
 import {changeFilter} from "../../store/action-creator/global-action-creator";
+import {ICategory} from "../../types/data-types";
+import FilterItem from "./FilterItem";
 
-const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: number }> = ({minPrice, maxPrice}) => {
+const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: number, category: ICategory }>
+	= ({
+		   minPrice,
+		   maxPrice,
+		   category
+	   }) => {
 	const [viewPrice, setViewPrice] = useState(false);
 	const [values, setValues] = React.useState([minPrice, maxPrice]);
 	const [priceButtonValidation, setPriceButtonValidation] = useState(true)
 
 	const sortHandler = () => {
-		store.dispatch(changeFilter({ priceMin: values[0] }))
-		store.dispatch(changeFilter({ priceMax: values[1] }))
+		store.dispatch(changeFilter({priceMin: values[0]}))
+		store.dispatch(changeFilter({priceMax: values[1]}))
 	}
 
 	useEffect(() => {
@@ -57,7 +64,8 @@ const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: nu
 							       }
 						       )}/>
 						<button onClick={sortHandler} disabled={!priceButtonValidation}
-						        className={priceButtonValidation ? styles.filter__category__button : `${styles.filter__category__button} ${styles.not_active}`}>OK</button>
+						        className={priceButtonValidation ? styles.filter__category__button : `${styles.filter__category__button} ${styles.not_active}`}>OK
+						</button>
 					</div>
 					<Range
 						values={values}
@@ -120,7 +128,7 @@ const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: nu
 										height: '16px',
 										width: '16px',
 										borderRadius: '100%',
-										transform:  isDragged ? 'scale(1.3)': 'scale(1)',
+										transform: isDragged ? 'scale(1.3)' : 'scale(1)',
 										transition: '0.3s ease-in, 0.3s ease-in-out'
 									}}
 								/>
@@ -129,11 +137,11 @@ const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: nu
 					/>
 				</div>
 			</div>
-			{/*{categories && categories.taxonomies && categories.taxonomies.length > 0 && categories.taxonomies.map((item) => {*/}
-			{/*    return (*/}
-			{/*        <FilterItem item={item} key={item.id}/>*/}
-			{/*    )*/}
-			{/*})}*/}
+			{category && category.taxonomies && category.taxonomies.length > 0 && category.taxonomies.map((item) => {
+				return (
+					<FilterItem item={item} key={item.id}/>
+				)
+			})}
 		</div>
 	);
 }

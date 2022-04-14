@@ -29,8 +29,8 @@ export interface ICategory {
   id: number
   name: string
   slug: string
-  taxonomies: Array<ITaxonomy>
-  products: Array<IProduct>
+  taxonomies?: Array<ITaxonomy>
+  products?: Array<IProduct>
 }
 
 export interface ITaxonomy {

@@ -5,7 +5,7 @@ const initialState: IFilter = {
 	sortBy: null,
 	priceMin: null,
 	priceMax: null,
-	subTaxonomy: null,
+	subTaxonomy: [],
 	limit: null,
 	offset: null,
 }
