@@ -1,55 +1,141 @@
 import {NextComponentType} from "next";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import styles from './Filter_.module.scss'
+import {getTrackBackground, Range} from 'react-range';
+import {store} from "../../store";
+import {changeFilter} from "../../store/action-creator/global-action-creator";
 
-const CategoryFilter: NextComponentType<{}, {}, {}> = () => {
-    const [viewPrice, setViewPrice] = useState(false);
-    return (
-        <div className="filter">
-            {/*<div className={viewPrice ? 'filter__category filter__category--active' : 'filter__category'}>*/}
-            {/*    <button className="h5 filter__category__title" onClick={() => setViewPrice(prev=>!prev)}>Price <span*/}
-            {/*        className="filter__category__arrow"> </span></button>*/}
-            {/*    <div className="filter__category__rage">*/}
-            {/*        <div className="filter__category__price-range">*/}
-            {/*            <input type="text"*/}
-            {/*                   className={minPrice > value.value.min || value.value.max < value.value.min ?*/}
-            {/*                       'filter__category__input error' : 'filter__category__input'} value={value.value.min}*/}
-            {/*                   onChange={e => setValue(prev => {*/}
-            {/*                           return {*/}
-            {/*                               value: {*/}
-            {/*                                   min: e.target.value?parseInt(e.target.value):0,*/}
-            {/*                                   max: prev.value.max*/}
-            {/*                               }*/}
-            {/*                           }*/}
-            {/*                       }*/}
-            {/*                   )}/>*/}
-            {/*            <span>-</span>*/}
-            {/*            <input type="text"*/}
-            {/*                   className={maxPrice < value.value.max || value.value.max < value.value.min ?*/}
-            {/*                       'filter__category__input error' : 'filter__category__input'} value={value.value.max}*/}
-            {/*                   onChange={e => setValue(prev => {*/}
-            {/*                           return {*/}
-            {/*                               value: {*/}
-            {/*                                   min: prev.value.min,*/}
-            {/*                                   max: e.target.value?parseInt(e.target.value):0*/}
-            {/*                               }*/}
-            {/*                           }*/}
-            {/*                       }*/}
-            {/*                   )}/>*/}
-            {/*            <button onClick={priceButtonValidation ? sortHandler : null}*/}
-            {/*                    className={priceButtonValidation ? 'filter__category__button' : 'filter__category__button not-active'}>OK*/}
-            {/*            </button>*/}
-            {/*        </div>*/}
-            {/*        <InputRange maxValue={maxPrice} minValue={minPrice}*/}
-            {/*                    value={value.value} onChange={value => setValue({ value })} formatLabel={() => {}}/>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*{categories && categories.taxonomies && categories.taxonomies.length > 0 && categories.taxonomies.map((item) => {*/}
-            {/*    return (*/}
-            {/*        <FilterItem item={item} key={item.id}/>*/}
-            {/*    )*/}
-            {/*})}*/}
-        </div>
-    );
+const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: number }> = ({minPrice, maxPrice}) => {
+	const [viewPrice, setViewPrice] = useState(false);
+	const [values, setValues] = React.useState([minPrice, maxPrice]);
+	const [priceButtonValidation, setPriceButtonValidation] = useState(true)
+
+	const sortHandler = () => {
+		store.dispatch(changeFilter({ priceMin: values[0] }))
+		store.dispatch(changeFilter({ priceMax: values[1] }))
+	}
+
+	useEffect(() => {
+		if (minPrice > values[0] ||
+			maxPrice < values[1]
+			|| values[1] < values[0]) {
+			setPriceButtonValidation(false)
+		} else {
+			setPriceButtonValidation(true)
+		}
+	}, [values, minPrice, maxPrice])
+
+	return (
+		<div className={styles.filter}>
+			<div className={viewPrice ? `${styles.filter__category} ${styles.active}` : styles.filter__category}>
+				<button className={`h5 ${styles.filter__category__title}`}
+				        onClick={() => setViewPrice(prev => !prev)}>Price <span
+					className={styles.filter__category__arrow}> </span></button>
+				<div className={styles.filter__category__rage}>
+					<div className={styles.filter__category__price_range}>
+						<input type="text"
+						       className={minPrice > values[0] || values[1] < values[0] ?
+							       `${styles.filter__category__input} ${styles.error}` : styles.filter__category__input}
+						       value={values[0]}
+						       onChange={e => setValues(prev => {
+								       return [
+									       e.target.value ? parseInt(e.target.value) : 0,
+									       prev[1]
+								       ]
+							       }
+						       )}/>
+						<span>-</span>
+						<input type="text"
+						       className={maxPrice < values[1] || values[1] < values[0] ?
+							       `${styles.filter__category__input} ${styles.error}` : styles.filter__category__input}
+						       value={values[1]}
+						       onChange={e => setValues(prev => {
+								       return [
+									       prev[1],
+									       e.target.value ? parseInt(e.target.value) : 0,
+								       ]
+							       }
+						       )}/>
+						<button onClick={sortHandler} disabled={!priceButtonValidation}
+						        className={priceButtonValidation ? styles.filter__category__button : `${styles.filter__category__button} ${styles.not_active}`}>OK</button>
+					</div>
+					<Range
+						values={values}
+						step={10}
+						min={minPrice}
+						max={maxPrice}
+						rtl={false}
+						onChange={(values) => {
+							setValues(values);
+						}}
+						renderTrack={({props, children}) => (
+							<div
+								onMouseDown={props.onMouseDown}
+								onTouchStart={props.onTouchStart}
+								style={{
+									...props.style,
+									height: '10px',
+									display: 'flex',
+									width: '100%',
+									marginTop: '5px',
+								}}
+							>
+								<div
+									ref={props.ref}
+									style={{
+										height: '6px',
+										width: '100%',
+										borderRadius: '0px',
+										background: getTrackBackground({
+											values,
+											colors: ['#eee', '#3f51b5', '#eee'],
+											min: minPrice,
+											max: maxPrice,
+											rtl: false,
+										}),
+										alignSelf: 'center'
+									}}
+								>
+									{children}
+								</div>
+							</div>
+						)}
+						renderThumb={({props, isDragged}) => (
+							<div
+								{...props}
+								style={{
+									...props.style,
+									height: '16px',
+									width: '16px',
+									borderRadius: '100%',
+									backgroundColor: '#3f51b5',
+									display: 'flex',
+									justifyContent: 'center',
+									alignItems: 'center',
+									boxShadow: '0px 2px 6px #AAA',
+								}}
+							>
+								<div
+									style={{
+										height: '16px',
+										width: '16px',
+										borderRadius: '100%',
+										transform:  isDragged ? 'scale(1.3)': 'scale(1)',
+										transition: '0.3s ease-in, 0.3s ease-in-out'
+									}}
+								/>
+							</div>
+						)}
+					/>
+				</div>
+			</div>
+			{/*{categories && categories.taxonomies && categories.taxonomies.length > 0 && categories.taxonomies.map((item) => {*/}
+			{/*    return (*/}
+			{/*        <FilterItem item={item} key={item.id}/>*/}
+			{/*    )*/}
+			{/*})}*/}
+		</div>
+	);
 }
 
 
