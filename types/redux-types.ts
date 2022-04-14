@@ -22,12 +22,12 @@ export interface ICart {
 }
 
 export interface IFilter {
-	sortBy?: string | null;
-	priceMin?: number | null;
-	priceMax?: number | null;
-	subTaxonomy?: number[];
-	limit?: number | null;
-	offset?: number | null;
+	sortBy: string | null;
+	priceMin: number | null;
+	priceMax: number | null;
+	subTaxonomy: number[];
+	limit: number | null;
+	offset: number | null;
 }
 
 export interface IActionFilter {

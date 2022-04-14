@@ -6,7 +6,7 @@ const initialState: IFilter = {
 	priceMin: null,
 	priceMax: null,
 	subTaxonomy: [],
-	limit: null,
+	limit: 9,
 	offset: null,
 }
 

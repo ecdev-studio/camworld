@@ -6,6 +6,7 @@ import {store} from "../../store";
 import {changeFilter} from "../../store/action-creator/global-action-creator";
 import {ICategory} from "../../types/data-types";
 import FilterItem from "./FilterItem";
+import {useTypedSelector} from "../../hook/useTypedSelector";
 
 const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: number, category: ICategory }>
 	= ({
@@ -16,10 +17,11 @@ const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: nu
 	const [viewPrice, setViewPrice] = useState(false);
 	const [values, setValues] = React.useState([minPrice, maxPrice]);
 	const [priceButtonValidation, setPriceButtonValidation] = useState(true)
+	const filter = useTypedSelector(state => state.filter);
 
 	const sortHandler = () => {
-		store.dispatch(changeFilter({priceMin: values[0]}))
-		store.dispatch(changeFilter({priceMax: values[1]}))
+		store.dispatch(changeFilter({...filter, priceMin: values[0]}))
+		store.dispatch(changeFilter({...filter, priceMax: values[1]}))
 	}
 
 	useEffect(() => {

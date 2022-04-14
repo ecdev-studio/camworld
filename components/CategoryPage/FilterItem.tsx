@@ -1,19 +1,27 @@
 import {NextComponentType} from "next";
-import {useEffect, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import styles from './Filter_.module.scss';
 import {ITaxonomy} from "../../types/data-types";
 import {useTypedSelector} from "../../hook/useTypedSelector";
+import {store} from "../../store";
+import {changeFilter} from "../../store/action-creator/global-action-creator";
 
 const FilterItem: NextComponentType<{}, {}, { item: ITaxonomy }> = ({item}) => {
 	const [viewBrand, setBrand] = useState(false);
-	const [subTaxonomies, setSubTaxonomies] = useState([]);
 	const filter = useTypedSelector(state => state.filter);
+	const [subTaxonomies, setSubTaxonomies] = useState<number[]>(filter.subTaxonomy);
 
 	useEffect(() => {
-		if (filter.subTaxonomy && filter.subTaxonomy.length > 0) {
+		store.dispatch(changeFilter({...filter, subTaxonomy: subTaxonomies}))
+	}, [subTaxonomies])
 
+	const checkHandler = (e:ChangeEvent<HTMLInputElement>) => {
+		if (e.target.checked) {
+			setSubTaxonomies(prev => [...prev, parseInt(e.target.value)])
+		} else {
+			setSubTaxonomies(prev => prev.filter(x => x !== parseInt(e.target.value)))
 		}
-	}, [filter])
+	}
 
 	return (
 		<div className={viewBrand ? `${styles.filter__category} ${styles.active}` : 'filter__category'}>
@@ -28,16 +36,8 @@ const FilterItem: NextComponentType<{}, {}, { item: ITaxonomy }> = ({item}) => {
 								name={tag.name}
 								type="checkbox"
 								value={tag.id}
-								checked={!!subTaxonomies.find(x => x === tag.id)}
-								// onClick={e => {
-								// 	if (e.target.checked) {
-								// 		sort([...subTaxonomies, tag.id])
-								// 		setSubTaxonomies(prev => [...prev, tag.id])
-								// 	} else {
-								// 		sort(subTaxonomies.filter(x => x !== tag.id))
-								// 		setSubTaxonomies(prev => prev.filter(x => x !== tag.id))
-								// 	}
-								// }}
+								defaultChecked={!!subTaxonomies.find(x => x === tag.id)}
+								onChange={(e) => checkHandler(e)}
 							/>
 							<span>{tag.name}</span>
 						</label>
