@@ -20,8 +20,7 @@ const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: nu
 	const filter = useTypedSelector(state => state.filter);
 
 	const sortHandler = () => {
-		store.dispatch(changeFilter({...filter, priceMin: values[0]}))
-		store.dispatch(changeFilter({...filter, priceMax: values[1]}))
+		store.dispatch(changeFilter({...filter, priceMin: values[0], priceMax: values[1]}))
 	}
 
 	useEffect(() => {

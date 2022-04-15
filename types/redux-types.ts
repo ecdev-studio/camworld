@@ -26,8 +26,9 @@ export interface IFilter {
 	priceMin: number | null;
 	priceMax: number | null;
 	subTaxonomy: number[];
-	limit: number | null;
-	offset: number | null;
+	limit: number;
+	offset: number;
+	page: number;
 }
 
 export interface IActionFilter {

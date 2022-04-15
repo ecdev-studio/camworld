@@ -11,8 +11,6 @@ import Pagination from "../components/CategoryPage/Pagination";
 import {useEffect, useState} from "react";
 import {useLazyQuery} from "@apollo/client";
 import {useTypedSelector} from "../hook/useTypedSelector";
-import {store} from "../store";
-import {changeFilter} from "../store/action-creator/global-action-creator";
 
 
 type PageProps = {
@@ -32,20 +30,33 @@ const paginationLimit = 9
 const Category: NextPage<PageProps> = (
 	{menuArray, products, category, maxAndMinPrice, currentCategory}) => {
 	const [prod, setProd] = useState(products.rows);
+	const [count, setCount] = useState(products.count);
 	const [getProducts, {data: dataSort, loading: dataLoading, error: dataError}] = useLazyQuery(getProductsFilter);
 	const filter = useTypedSelector(state => state.filter);
 
 	useEffect(() => {
-		store.dispatch(changeFilter({ priceMin: maxAndMinPrice.min }))
-	}, [])
-
-	useEffect(() => {
-		// getProducts().then()
-	}, [getProducts])
+		const backendQuery = async () => {
+			return await getProducts({
+				variables: {
+					categoryId: currentCategory.id,
+					sort: {
+						sortBy: filter.sortBy,
+						priceMin: filter.priceMin,
+						priceMax: filter.priceMax,
+					},
+					subTaxonomy: filter.subTaxonomy,
+					offset: filter.limit * (filter.page - 1),
+					limit: filter.limit
+				},
+			})
+		}
+		backendQuery().then()
+	}, [getProducts, filter, currentCategory])
 
 	useEffect(() => {
 		if (dataSort && !dataLoading) {
-			console.log(dataSort.getProducts.rows);
+			setProd(dataSort.getProducts.rows)
+			setCount(dataSort.getProducts.count)
 		}
 	}, [dataSort, dataLoading, dataError])
 
@@ -57,7 +68,7 @@ const Category: NextPage<PageProps> = (
 					<div className={styles.content}>
 						<CategoryFilter maxPrice={maxAndMinPrice.max} minPrice={maxAndMinPrice.min} category={category} />
 						<CategoryProducts products={prod}/>
-						<Pagination limit={paginationLimit} count={products.count}/>
+						<Pagination limit={paginationLimit} count={count}/>
 					</div>
 				</div>
 			</section>

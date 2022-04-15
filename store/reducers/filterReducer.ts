@@ -7,7 +7,8 @@ const initialState: IFilter = {
 	priceMax: null,
 	subTaxonomy: [],
 	limit: 9,
-	offset: null,
+	offset: 0,
+	page: 1,
 }
 
 export const filterReducer = (state = initialState, action: IActionFilter): IFilter => {
