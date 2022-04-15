@@ -97,7 +97,7 @@ const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: nu
 										borderRadius: '0px',
 										background: getTrackBackground({
 											values,
-											colors: ['#eee', '#3f51b5', '#eee'],
+											colors: ['#eee', '#3dd5a2', '#eee'],
 											min: minPrice,
 											max: maxPrice,
 											rtl: false,
@@ -117,7 +117,7 @@ const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: nu
 									height: '16px',
 									width: '16px',
 									borderRadius: '100%',
-									backgroundColor: '#3f51b5',
+									backgroundColor: '#3dd5a2',
 									display: 'flex',
 									justifyContent: 'center',
 									alignItems: 'center',

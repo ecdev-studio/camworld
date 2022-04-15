@@ -2,11 +2,17 @@ import {NextComponentType} from "next";
 import React, {ChangeEvent, useState} from "react";
 import BreadCrumbs from "../BreadCrumbs/BreadCrumbs";
 import styles from './CategoryPage_.module.scss'
+import {store} from "../../store";
+import {changeFilter} from "../../store/action-creator/global-action-creator";
+import {useTypedSelector} from "../../hook/useTypedSelector";
 
 const CategoryTop: NextComponentType<{}, {}, { name: string }> = ({name}) => {
     const [sortBy, setSortBy] = useState("low_to_high")
-    const sort=async (e:ChangeEvent<HTMLSelectElement>)=>{
+    const filter = useTypedSelector(state => state.filter);
 
+    const sort=async (e:ChangeEvent<HTMLSelectElement>)=>{
+        setSortBy(e.target.value)
+        store.dispatch(changeFilter({...filter, sortBy: e.target.value}))
     }
 
     return (
