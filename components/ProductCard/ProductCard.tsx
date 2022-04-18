@@ -28,7 +28,7 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 					<a className={styles.image_wrap}>
 						<Image
 							className={styles.image}
-							src={'https://camworld.ecdevstudio.com' + product.image}
+							src={'/images/product' + product.image}
 							width={180}
 							height={180}
 							alt={product.name}

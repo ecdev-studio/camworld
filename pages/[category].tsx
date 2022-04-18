@@ -57,6 +57,7 @@ const Category: NextPage<PageProps> = (
 		if (dataSort && !dataLoading) {
 			setProd(dataSort.getProducts.rows)
 			setCount(dataSort.getProducts.count)
+			window.scrollTo({top: 0, behavior: 'smooth'});
 		}
 	}, [dataSort, dataLoading, dataError])
 
