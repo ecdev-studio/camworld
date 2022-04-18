@@ -69,7 +69,7 @@ const Header: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = ({men
             {
               menuArray&&menuArray.length!==0&&menuArray.map((item, index) => {
                 return <li className={styles.nav__item} key={index}>
-                  <Link href={item.slug}>
+                  <Link href={`/${item.slug}`}>
                     <a className={styles.nav__link}>{item.name}</a>
                   </Link>
                 </li>

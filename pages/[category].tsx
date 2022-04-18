@@ -100,7 +100,7 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ category:
 export async function getStaticPaths() {
 	const menuArray = await FetchQuery(getCategoryQuery)
 	const paths = menuArray.data.getCategories.map((category: ICategory) => ({
-		params: {category: category.name.toLowerCase()},
+		params: {category: category.slug},
 	}));
 	return {paths, fallback: false}
 }

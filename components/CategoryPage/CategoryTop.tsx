@@ -17,7 +17,7 @@ const CategoryTop: NextComponentType<{}, {}, { name: string }> = ({name}) => {
 
     return (
         <>
-            <BreadCrumbs name={name}/>
+            <BreadCrumbs name={name} />
             <div className={styles.head}>
                 <h3 className={styles.title}>DSLR and Mirrorless Cameras</h3>
                 <div className={styles.sort}>

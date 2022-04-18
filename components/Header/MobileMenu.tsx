@@ -19,8 +19,8 @@ const MobileMenu: NextComponentType<{}, {}, { menuArray: Array<ICategory> }> = (
         </li>
         {menuArray&&menuArray.length!==0&&menuArray.map((item, index) => {
           return <li className={styles.item} key={index}>
-            <Link href={item.slug}>
-              <a className={router.pathname == item.slug ? `${styles.link} ${styles.active}` :styles.link} >
+            <Link href={`/${item.slug}`}>
+              <a className={router.pathname == `/${item.slug}` ? `${styles.link} ${styles.active}` :styles.link} >
                 {item.name}
               </a>
             </Link>
