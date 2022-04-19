@@ -7,6 +7,7 @@ import Head from 'next/head';
 import styles from '../components/CheckoutPage/CheckoutPage_.module.scss'
 import CheckoutSteps from "../components/CheckoutPage/CheckoutSteps";
 import {useState} from "react";
+import Shipping from "../components/CheckoutPage/Shipping";
 
 type PageProps = {
 	menuArray: Array<ICategory>
@@ -24,8 +25,9 @@ const Checkout: NextPage<PageProps> = (props) => {
 			<Head>
 				<title>Checkout</title>
 			</Head>
-			<section className={styles.checkout}>
+			<section>
 				<CheckoutSteps step={step} changeStep={changeStep} />
+				<Shipping />
 			</section>
 		</Layout>
 	)

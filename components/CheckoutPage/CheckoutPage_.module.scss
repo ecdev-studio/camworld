@@ -1,14 +1,12 @@
 @import "../../styles/mixins";
 @import "../../styles/config";
 
-.checkout {
+.shipping {
   &__inner {
     @include container;
     margin-top: 3rem;
   }
-}
 
-.shipping {
   &__form {
     margin-top: 2rem;
     display: flex;
