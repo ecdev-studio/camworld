@@ -7,6 +7,7 @@ import Head from 'next/head';
 import CheckoutSteps from "../components/CheckoutPage/CheckoutSteps";
 import {useState} from "react";
 import ShippingStep from "../components/CheckoutPage/ShippingStep";
+import PaymentStep from "../components/CheckoutPage/PaymentStep";
 
 type PageProps = {
 	menuArray: Array<ICategory>
@@ -21,6 +22,7 @@ interface IShipping {
 
 const Checkout: NextPage<PageProps> = (props) => {
 	const [step, setStep] = useState('shipping');
+	const [payment, setPayment] = useState('');
 	const [shipping, setShipping] = useState<IShipping>({
 		address: '',
 		city: '',
@@ -39,7 +41,8 @@ const Checkout: NextPage<PageProps> = (props) => {
 			</Head>
 			<section>
 				<CheckoutSteps step={step} changeStep={changeStep} />
-				<ShippingStep shipping={shipping} setShipping={setShipping} changeStep={changeStep} />
+				{step === 'shipping' && <ShippingStep shipping={shipping} setShipping={setShipping} changeStep={changeStep} />}
+				{step === 'payment' && <PaymentStep setPayment={setPayment} changeStep={changeStep} />}
 			</section>
 		</Layout>
 	)

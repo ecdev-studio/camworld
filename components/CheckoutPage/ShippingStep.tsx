@@ -14,15 +14,15 @@ const ShippingStep: NextComponentType<{}, {}, {
 	changeStep(value: string): void
 }> = ({shipping, setShipping, changeStep}) => {
 
-	const submitHandler = (value: string, e: React.FormEvent<HTMLFormElement>) => {
+	const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		changeStep(value);
+		changeStep('payment');
 	}
 
 	return (
 		<div className={styles.shipping__inner}>
 			<h1 className={`h2`}>Shipping</h1>
-			<form className={styles.shipping__form} onSubmit={(e) => submitHandler('payment', e)}>
+			<form className={styles.shipping__form} onSubmit={(e) => submitHandler(e)}>
 				<div className={styles.shipping__form__item}>
 					<label htmlFor="address">Address</label>
 					<input onChange={(e) => setShipping(prevState => ({...prevState, address: e.target.value}))}
