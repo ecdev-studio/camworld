@@ -27,6 +27,7 @@ const paginationLimit = 9
 const Category: NextPage<PageProps> = (
     {menuArray, products, categories,maxAndMinPrice,currentCategory}) => {
 
+    // console.log(product)
 
     return (
         <Layout menuArray={menuArray}>

@@ -63,7 +63,7 @@ const Footer: NextComponentType = () => {
             </Link>
           </li>
           <li className={styles.links__item}>
-            <a className={styles.footer__link} href="/sitemap.xml" target='_blank' rel='noreferrer'>Site Map</a>
+            <a className={styles.footer__link}>Site Map</a>
           </li>
         </ul>
       </div>

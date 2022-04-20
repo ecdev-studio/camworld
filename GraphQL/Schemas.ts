@@ -1,4 +1,4 @@
-import {gql} from "@apollo/client";
+import { gql } from '@apollo/client'
 
 /*
 * all pages
@@ -11,7 +11,6 @@ export const getCategoryQuery = gql`
         }
     }
 `
-
 
 /*
 * home page
@@ -71,3 +70,62 @@ export const getProductsPrerender = gql`
             },
     },
 `
+
+/*
+* Product by id
+ */
+
+export const getProductBySlug = gql`
+    query($slug: String!) {
+            getProductBySlug(slug: $slug) {
+                id
+                name
+                slug
+                image
+                descriptions{
+                    title
+                    value
+                }
+                categoryId
+                price
+                sku
+                youtubeEmbed
+                rating
+                numReviews
+                category {
+                    name
+                    slug
+                    taxonomies {
+                        name
+                        subTaxonomies {
+                            name
+                            taxonomyId
+                        }
+                    }
+                }
+                galleries {
+                    url
+                    productId
+                }
+                highlights {
+                    name
+                    productId
+                }
+                reviews {
+                    name
+                    email
+                    title
+                    review
+                    rating
+                    productId
+                    createdAt
+                }
+                specs {
+                    key
+                    value
+                    productId
+                }
+            }
+    }
+`
+
