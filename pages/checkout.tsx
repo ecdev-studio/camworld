@@ -4,20 +4,32 @@ import {FetchQuery} from "../hook/fetch-hooks";
 import {getCategoryQuery} from "../GraphQL/Schemas";
 import {ICategory} from "../types/data-types";
 import Head from 'next/head';
-import styles from '../components/CheckoutPage/CheckoutPage_.module.scss'
 import CheckoutSteps from "../components/CheckoutPage/CheckoutSteps";
 import {useState} from "react";
-import Shipping from "../components/CheckoutPage/Shipping";
+import ShippingStep from "../components/CheckoutPage/ShippingStep";
 
 type PageProps = {
 	menuArray: Array<ICategory>
 }
 
+interface IShipping {
+	address: string,
+	city: string,
+	postalCode: string,
+	country: string,
+}
+
 const Checkout: NextPage<PageProps> = (props) => {
 	const [step, setStep] = useState('shipping');
+	const [shipping, setShipping] = useState<IShipping>({
+		address: '',
+		city: '',
+		postalCode: '',
+		country: '',
+	});
 
 	const changeStep = (value: string) => {
-		setStep(value)
+		setStep(value);
 	}
 
 	return (
@@ -27,7 +39,7 @@ const Checkout: NextPage<PageProps> = (props) => {
 			</Head>
 			<section>
 				<CheckoutSteps step={step} changeStep={changeStep} />
-				<Shipping />
+				<ShippingStep shipping={shipping} setShipping={setShipping} changeStep={changeStep} />
 			</section>
 		</Layout>
 	)
