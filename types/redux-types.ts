@@ -33,7 +33,7 @@ export interface IFilter {
 
 export interface IActionFilter {
 	type: string;
-	payload: IFilter;
+	payload?: IFilter;
 }
 
 export type AppAction = MobileAppAction

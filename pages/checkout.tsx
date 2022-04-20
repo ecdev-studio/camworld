@@ -8,6 +8,7 @@ import CheckoutSteps from "../components/CheckoutPage/CheckoutSteps";
 import {useState} from "react";
 import ShippingStep from "../components/CheckoutPage/ShippingStep";
 import PaymentStep from "../components/CheckoutPage/PaymentStep";
+import PlaceOrderStep from "../components/CheckoutPage/PlaceOrderStep";
 
 type PageProps = {
 	menuArray: Array<ICategory>
@@ -43,6 +44,7 @@ const Checkout: NextPage<PageProps> = (props) => {
 				<CheckoutSteps step={step} changeStep={changeStep} />
 				{step === 'shipping' && <ShippingStep shipping={shipping} setShipping={setShipping} changeStep={changeStep} />}
 				{step === 'payment' && <PaymentStep setPayment={setPayment} changeStep={changeStep} />}
+				{step === 'placeorder' && <PlaceOrderStep payment={payment} shipping={shipping} />}
 			</section>
 		</Layout>
 	)

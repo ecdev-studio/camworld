@@ -1,13 +1,7 @@
 import {NextComponentType} from "next";
 import React from "react";
-import styles from './CheckoutPage_.module.scss'
-
-interface IShipping {
-	address: string,
-	city: string,
-	postalCode: string,
-	country: string,
-}
+import styles from './CheckoutPage_.module.scss';
+import {IShipping} from "../../types/data-types";
 
 const ShippingStep: NextComponentType<{}, {}, {
 	shipping: IShipping, setShipping: (cb: (value: IShipping) => IShipping) => void,

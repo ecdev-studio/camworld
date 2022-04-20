@@ -74,3 +74,10 @@ export interface ISpecification {
   value: string
   productId: number
 }
+
+export interface IShipping {
+  address: string,
+  city: string,
+  postalCode: string,
+  country: string,
+}

@@ -1,6 +1,6 @@
 import {NextComponentType} from "next";
 import React from "react";
-import styles from './CheckoutPage_.module.scss'
+import styles from './CheckoutPage_.module.scss';
 
 const ShippingStep: NextComponentType<{}, {}, {
 	setPayment(value: string): void,
