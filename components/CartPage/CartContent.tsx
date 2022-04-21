@@ -60,7 +60,7 @@ const CartContent: NextComponentType<{}, {}, {}> = () => {
 											</a>
 										</Link>
 										<div className={styles.cart__product__item__info}>
-											<Link href={product.slug}>
+											<Link href={`/product/${product.slug}`}>
 												<a className={styles.cart__product__item__title}>
 													{product.name}
 												</a>

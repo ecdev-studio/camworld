@@ -24,7 +24,7 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 		}
 		return (
 			<>
-				<Link href={product.slug}>
+				<Link href={`/product/${product.slug}`}>
 					<a className={styles.image_wrap}>
 						<Image
 							className={styles.image}

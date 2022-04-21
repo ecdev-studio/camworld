@@ -8,12 +8,16 @@ import {changeFilter} from "../../store/action-creator/global-action-creator";
 
 const FilterItem: NextComponentType<{}, {}, { item: ITaxonomy }> = ({item}) => {
 	const [viewBrand, setBrand] = useState(false);
+	const [update, setUpdate] = useState(false);
 	const filter = useTypedSelector(state => state.filter);
 	const [subTaxonomies, setSubTaxonomies] = useState<number[]>(filter.subTaxonomy);
 
 	useEffect(() => {
-		store.dispatch(changeFilter({...filter, subTaxonomy: subTaxonomies}))
-	}, [subTaxonomies])
+		if (update) {
+			store.dispatch(changeFilter({...filter, subTaxonomy: subTaxonomies}))
+			setUpdate(false)
+		}
+	}, [subTaxonomies, filter, update])
 
 	const checkHandler = (e:ChangeEvent<HTMLInputElement>) => {
 		if (e.target.checked) {
@@ -21,6 +25,7 @@ const FilterItem: NextComponentType<{}, {}, { item: ITaxonomy }> = ({item}) => {
 		} else {
 			setSubTaxonomies(prev => prev.filter(x => x !== parseInt(e.target.value)))
 		}
+		setUpdate(true)
 	}
 
 	return (
