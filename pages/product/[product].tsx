@@ -12,6 +12,7 @@ import iconShipping from '../../public/images/ic_shipping.svg'
 import Information from "../../components/ProductPage/Information";
 import Image from "next/image";
 import React from "react";
+import Tabs from "../../components/ProductPage/Tabs";
 
 type PageProps = {
 	menuArray: Array<ICategory>
@@ -19,11 +20,6 @@ type PageProps = {
 }
 
 const Product: NextPage<PageProps> = ({ menuArray, productData }) => {
-
-	const addToCartHandler = () => {
-
-	}
-
 	return (
 		<Layout menuArray={menuArray}>
 			<Head>
@@ -33,29 +29,7 @@ const Product: NextPage<PageProps> = ({ menuArray, productData }) => {
 				<div className={styles.product__inner}>
 					<BreadCrumbs name={productData.name} />
 					<ProductContent product={productData} />
-					<div className={styles.product__content__left__mobile}>
-						<Information product={productData} />
-						<button onClick={addToCartHandler} className={styles.product__add_to_cart}>
-							<Image
-								className={styles.product__add_to_cart__icon}
-								src={iconCart}
-								width={20}
-								height={18}
-								alt={'icon cart'}
-							/>
-							Add to cart
-						</button>
-						<div className={styles.product__shipping}>
-							<Image
-								className={styles.product__shipping__icon}
-								src={iconShipping}
-								width={21}
-								height={13}
-								alt={'icon shipping'}
-							/>
-							<span className={styles.product__shipping__text}>FREE SHIPPING Available</span>
-						</div>
-					</div>
+
 				</div>
 			</section>
 		</Layout>
