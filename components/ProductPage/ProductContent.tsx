@@ -8,12 +8,22 @@ import Image from "next/image";
 import iconCart from "../../public/images/ic_cart_white.svg";
 import iconShipping from "../../public/images/ic_shipping.svg";
 import Tabs from "./Tabs";
+import {store} from "../../store";
+import {changeQuantity} from "../../store/action-creator/global-action-creator";
 
 const ProductContent: NextComponentType<{}, {}, {
 	product: IProduct
 }> = ({product}) => {
 	const addToCartHandler = () => {
-
+		const item = {
+			name: product.name,
+			image: product.image,
+			price: product.price,
+			id: product.id,
+			slug: product.slug,
+			quantity: 1
+		}
+		store.dispatch(changeQuantity(item, 1))
 	}
 
 	return (

@@ -7,12 +7,7 @@ import Head from "next/head";
 import styles from '../../components/ProductPage/ProductPage_.module.scss'
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
 import ProductContent from "../../components/ProductPage/ProductContent";
-import iconCart from '../../public/images/ic_cart_white.svg'
-import iconShipping from '../../public/images/ic_shipping.svg'
-import Information from "../../components/ProductPage/Information";
-import Image from "next/image";
 import React from "react";
-import Tabs from "../../components/ProductPage/Tabs";
 
 type PageProps = {
 	menuArray: Array<ICategory>
@@ -29,7 +24,6 @@ const Product: NextPage<PageProps> = ({ menuArray, productData }) => {
 				<div className={styles.product__inner}>
 					<BreadCrumbs name={productData.name} />
 					<ProductContent product={productData} />
-
 				</div>
 			</section>
 		</Layout>
