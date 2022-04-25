@@ -35,7 +35,9 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 						/>
 					</a>
 				</Link>
-				<Rating value={product.rating} text={`${product.numReviews}`} hideCountReviewers={false}/>
+				<div className={styles.rating}>
+					<Rating value={product.rating} text={`${product.numReviews}`} hideCountReviewers={false}/>
+				</div>
 				<Link href={product.slug}>
 					<a><h6 className={styles.title}>{product.name}</h6></a>
 				</Link>
