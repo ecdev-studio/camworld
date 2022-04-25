@@ -53,7 +53,7 @@ const ProductContent: NextComponentType<{}, {}, {
 						<span className={styles.product__shipping__text}>FREE SHIPPING Available</span>
 					</div>
 				</div>
-				<Tabs />
+				<Tabs product={product} />
 			</div>
 			<div className={styles.product__content__right}>
 				<div className={styles.product__content__right__inner}>

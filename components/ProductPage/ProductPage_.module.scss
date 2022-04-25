@@ -111,7 +111,10 @@
     &__icon {
       width: 21px;
       height: 13px;
-      margin-right: 12px;
+    }
+
+    span:last-child {
+      margin-left: 12px;
     }
   }
 }
