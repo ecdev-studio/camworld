@@ -14,10 +14,6 @@ const Tabs: NextComponentType<{}, {}, { product: IProduct }> = ({product}) => {
 		5: 0,
 	})
 
-	const addVisiblePopup = () => {
-
-	}
-
 	const calculatePercentage = (ratingItem: number) => {
 		const result = ratingItem / product.numReviews * 100
 		return result.toFixed(2)
@@ -185,14 +181,15 @@ const Tabs: NextComponentType<{}, {}, { product: IProduct }> = ({product}) => {
 					<ul className={styles.review_comments__list}>
 						{renderReview(product.reviews)}
 					</ul>
-					<button className={styles.review_comments__button} onClick={addVisiblePopup}>
+					{/*/*TODO Add review logic*/}
+					{/*<button className={styles.review_comments__button} onClick={addVisiblePopup}>
 						<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path
 								d="M14.7829 1.50351L15.5319 2.30912C16.156 2.98046 16.156 3.92034 15.5319 4.59168L5.42073 15.4674L1.80068 16.9444C1.55102 17.0787 1.30136 16.9444 1.17654 16.8101C1.05171 16.6758 0.926877 16.4073 1.05171 16.1388L2.54966 12.3793L12.6608 1.50351C13.1601 0.832164 14.1588 0.832164 14.7829 1.50351Z"
 								stroke="#242222" strokeWidth="1.7" strokeMiterlimit="10"/>
 						</svg>
 						Write a review
-					</button>
+					</button>*/}
 				</div>
 			</div>
 		</div>
