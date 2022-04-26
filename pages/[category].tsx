@@ -59,8 +59,11 @@ const Category: NextPage<PageProps> = (
 
 	useEffect(() => {
 		setUpdate(true)
-	}, []);
 
+		return () => {
+			setUpdate(false)
+		}
+	}, []);
 
 	useEffect(() => {
 		if (dataSort && !dataLoading) {
