@@ -1,8 +1,8 @@
 import Layout from '../../components/Layout/Layout'
 import {ICategory, IProduct} from '../../types/data-types'
-import {GetStaticPropsContext, NextPage, NextPageContext} from 'next'
+import {GetStaticPropsContext, NextPage} from 'next'
 import {FetchQuery, FetchQueryWithProps} from '../../hook/fetch-hooks'
-import {getCategoryQuery, getProductBySlug, getProductsFilter, getProductsPrerender} from '../../GraphQL/Schemas'
+import {getCategoryQuery, getProductBySlug, getProductsFilter} from '../../GraphQL/Schemas'
 import Head from "next/head";
 import styles from '../../components/ProductPage/ProductPage_.module.scss'
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
