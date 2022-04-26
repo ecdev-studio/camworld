@@ -1,8 +1,8 @@
 import Layout from '../../components/Layout/Layout'
 import {ICategory, IProduct} from '../../types/data-types'
-import {NextPage, NextPageContext} from 'next'
-import { FetchQuery, FetchQueryWithProps } from '../../hook/fetch-hooks'
-import { getCategoryQuery, getProductBySlug } from '../../GraphQL/Schemas'
+import {GetStaticPropsContext, NextPage, NextPageContext} from 'next'
+import {FetchQuery, FetchQueryWithProps} from '../../hook/fetch-hooks'
+import {getCategoryQuery, getProductBySlug, getProductsFilter, getProductsPrerender} from '../../GraphQL/Schemas'
 import Head from "next/head";
 import styles from '../../components/ProductPage/ProductPage_.module.scss'
 import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
@@ -14,7 +14,7 @@ type PageProps = {
 	productData: IProduct
 }
 
-const Product: NextPage<PageProps> = ({ menuArray, productData }) => {
+const Product: NextPage<PageProps> = ({menuArray, productData}) => {
 	return (
 		<Layout menuArray={menuArray}>
 			<Head>
@@ -22,19 +22,18 @@ const Product: NextPage<PageProps> = ({ menuArray, productData }) => {
 			</Head>
 			<section className={styles.product}>
 				<div className={styles.product__inner}>
-					<BreadCrumbs name={productData.name} />
-					<ProductContent product={productData} />
+					<BreadCrumbs name={productData.name}/>
+					<ProductContent product={productData}/>
 				</div>
 			</section>
 		</Layout>
 	)
 }
 
-export async function getServerSideProps (context: NextPageContext) {
+export async function getStaticProps({params}: GetStaticPropsContext<{ product: string }>) {
 	const menuData = await FetchQuery(getCategoryQuery)
-	const productDataQuery = await FetchQueryWithProps(getProductBySlug, {
-		slug: context.query.product
-	})
+	// @ts-ignore
+	const productDataQuery = await FetchQueryWithProps(getProductBySlug, {slug: params.product})
 
 	return {
 		props: {
@@ -42,6 +41,14 @@ export async function getServerSideProps (context: NextPageContext) {
 			productData: productDataQuery.data.getProductBySlug
 		}
 	}
+}
+
+export async function getStaticPaths() {
+	const products = await FetchQueryWithProps(getProductsFilter, {})
+	const paths = products.data.getProducts.rows.map((product: IProduct) => ({
+		params: {product: product.slug},
+	}));
+	return {paths, fallback: false}
 }
 
 export default Product

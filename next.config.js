@@ -2,7 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['camworld.ecdevstudio.com'],
+    loader: 'akamai',
+    path: '/',
+    domains: ['http://localhost:3000/'],
   },
 }
 
