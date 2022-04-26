@@ -31,28 +31,36 @@ const Category: NextPage<PageProps> = (
 	{menuArray, products, category, maxAndMinPrice, currentCategory}) => {
 	const [prod, setProd] = useState(products.rows);
 	const [loader, setLoader] = useState(false);
+	const [update, setUpdate] = useState(false);
 	const [count, setCount] = useState(products.count);
 	const [getProducts, {data: dataSort, loading: dataLoading, error: dataError}] = useLazyQuery(getProductsFilter);
 	const filter = useTypedSelector(state => state.filter);
 
 	useEffect(() => {
 		const backendQuery = async () => {
-			return await getProducts({
-				variables: {
-					categoryId: currentCategory.id,
-					sort: {
-						sortBy: filter.sortBy,
-						priceMin: filter.priceMin,
-						priceMax: filter.priceMax,
+			if (update) {
+				return await getProducts({
+					variables: {
+						categoryId: currentCategory.id,
+						sort: {
+							sortBy: filter.sortBy,
+							priceMin: filter.priceMin,
+							priceMax: filter.priceMax,
+						},
+						subTaxonomy: filter.subTaxonomy,
+						offset: filter.limit * (filter.page - 1),
+						limit: filter.limit
 					},
-					subTaxonomy: filter.subTaxonomy,
-					offset: filter.limit * (filter.page - 1),
-					limit: filter.limit
-				},
-			})
+				})
+			}
 		}
 		backendQuery().then()
-	}, [getProducts, filter, currentCategory])
+	}, [filter])
+
+	useEffect(() => {
+		setUpdate(true)
+	}, []);
+
 
 	useEffect(() => {
 		if (dataSort && !dataLoading) {
@@ -63,7 +71,7 @@ const Category: NextPage<PageProps> = (
 
 			setTimeout(()=> {
 				setLoader(false)
-			}, 800)
+			}, 1000)
 		}
 	}, [dataSort, dataLoading, dataError, setLoader])
 
