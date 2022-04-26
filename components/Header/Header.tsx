@@ -4,8 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import styles from './Header_.module.scss'
-import headLineIcon from '../../public/images/Layout/head-line.svg'
-import logoIcon from '../../public/images/Layout/logo.svg'
+import headLineIcon from '../../public/images/layout/head-line.svg'
+import logoIcon from '../../public/images/layout/logo.svg'
 import {store} from "../../store";
 import {toggleMenu} from "../../store/action-creator/global-action-creator";
 import {useTypedSelector} from "../../hook/useTypedSelector";
