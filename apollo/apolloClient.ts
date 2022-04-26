@@ -11,7 +11,7 @@ function createApolloClient() {
 	return new ApolloClient({
 		ssrMode: typeof window === 'undefined',
 		link: new HttpLink({
-			uri: 'http://localhost:5000/graphql',
+			uri: process.env.BACKEND || `https://backend.ecdevstudio.com/graphql`,
 		}),
 		cache: new InMemoryCache(),
 	})
