@@ -8,7 +8,7 @@ import CategoryTop from "../components/CategoryPage/CategoryTop";
 import CategoryFilter from "../components/CategoryPage/CategoryFilter";
 import CategoryProducts from "../components/CategoryPage/CategoryProducts";
 import Pagination from "../components/CategoryPage/Pagination";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {useLazyQuery} from "@apollo/client";
 import {useTypedSelector} from "../hook/useTypedSelector";
 
@@ -29,7 +29,7 @@ type PageProps = {
 const paginationLimit = 9
 const Category: NextPage<PageProps> = (
 	{menuArray, products, category, maxAndMinPrice, currentCategory}) => {
-	const [prod, setProd] = useState(products.rows);
+	const [prod, setProd] = useState<Array<IProduct>>(products.rows);
 	const [loader, setLoader] = useState(false);
 	const [update, setUpdate] = useState(false);
 	const [count, setCount] = useState(products.count);
@@ -58,8 +58,11 @@ const Category: NextPage<PageProps> = (
 	}, [filter])
 
 	useEffect(() => {
-		setUpdate(true)
+		setProd(products.rows)
+	}, [products.rows, setProd]);
 
+	useEffect(() => {
+		setUpdate(true)
 		return () => {
 			setUpdate(false)
 		}
@@ -98,7 +101,7 @@ export async function getStaticProps({params}: GetStaticPropsContext<{ category:
 	const menuData = await FetchQuery(getCategoryQuery)
 	const menuArray = menuData.data.getCategories
 	// @ts-ignore
-	const currentCategory: ICategory = menuArray.find((x: ICategory) => x.name.toLowerCase() === params.category)
+	const currentCategory: ICategory = menuArray.find((x: ICategory) => x.slug === params.category)
 	const products = await FetchQueryWithProps(getProductsPrerender, {
 		categoryId: currentCategory.id,
 		limit: paginationLimit

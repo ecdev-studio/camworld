@@ -10,7 +10,7 @@ const CategoryProducts: NextComponentType<{}, {}, { products: Array<IProduct>, l
             {
                 products.map((product, index) => {
                     return (
-                        <div key={index} className={styles.item}>
+                        <div key={`${index}-${product.id}`} className={styles.item}>
                             <ProductCard key={index} product={product}/>
                         </div>
                     )

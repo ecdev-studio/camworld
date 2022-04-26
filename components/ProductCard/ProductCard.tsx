@@ -10,18 +10,18 @@ import {useMemo} from "react";
 
 
 const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}) => {
-	return useMemo(() => {
-		const addToCartHandler = () => {
-			const item = {
-				name: product.name,
-				image: product.image,
-				price: product.price,
-				id: product.id,
-				slug: product.slug,
-				quantity: 1
-			}
-			store.dispatch(changeQuantity(item, 1))
+	const addToCartHandler = () => {
+		const item = {
+			name: product.name,
+			image: product.image,
+			price: product.price,
+			id: product.id,
+			slug: product.slug,
+			quantity: 1
 		}
+		store.dispatch(changeQuantity(item, 1))
+	}
+	return useMemo(() => {
 		return (
 			<>
 				<Link href={`/product/${product.slug}`}>
@@ -53,7 +53,7 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 				</div>
 			</>
 		)
-	}, [product])
+	}, [product.slug, product.image, product.slug, product.name, product.price, product.id, product])
 }
 
 export default ProductCard
