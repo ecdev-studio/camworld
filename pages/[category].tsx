@@ -30,6 +30,7 @@ const paginationLimit = 9
 const Category: NextPage<PageProps> = (
 	{menuArray, products, category, maxAndMinPrice, currentCategory}) => {
 	const [prod, setProd] = useState(products.rows);
+	const [loader, setLoader] = useState(false);
 	const [count, setCount] = useState(products.count);
 	const [getProducts, {data: dataSort, loading: dataLoading, error: dataError}] = useLazyQuery(getProductsFilter);
 	const filter = useTypedSelector(state => state.filter);
@@ -55,11 +56,16 @@ const Category: NextPage<PageProps> = (
 
 	useEffect(() => {
 		if (dataSort && !dataLoading) {
+			setLoader(true)
 			setProd(dataSort.getProducts.rows)
 			setCount(dataSort.getProducts.count)
 			window.scrollTo({top: 0, behavior: 'smooth'});
+
+			setTimeout(()=> {
+				setLoader(false)
+			}, 800)
 		}
-	}, [dataSort, dataLoading, dataError])
+	}, [dataSort, dataLoading, dataError, setLoader])
 
 	return (
 		<Layout menuArray={menuArray}>
@@ -68,7 +74,7 @@ const Category: NextPage<PageProps> = (
 					<CategoryTop name={currentCategory.name}/>
 					<div className={styles.content}>
 						<CategoryFilter maxPrice={maxAndMinPrice.max} minPrice={maxAndMinPrice.min} category={category} />
-						<CategoryProducts products={prod}/>
+						<CategoryProducts loader={loader} products={prod}/>
 						<Pagination limit={paginationLimit} count={count}/>
 					</div>
 				</div>

@@ -4,8 +4,7 @@ import {IProduct} from "../../types/data-types";
 import ProductCard from "../ProductCard/ProductCard";
 import styles from './CategoryPage_.module.scss'
 
-const CategoryProducts: NextComponentType<{}, {}, { products: Array<IProduct> }> = ({products}) => {
-    const loader = false
+const CategoryProducts: NextComponentType<{}, {}, { products: Array<IProduct>, loader:boolean }> = ({products, loader}) => {
     return (
         <div className={`${loader ? `${styles.list} ${styles.not_active}` : styles.list}`}>
             {
