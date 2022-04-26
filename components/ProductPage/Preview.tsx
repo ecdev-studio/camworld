@@ -16,8 +16,9 @@ const Preview: NextComponentType<{}, {}, {galleries: IGallery[]}> = ({galleries}
 			return(
 				<div className={styles.product__thumbs__item} key={index} onClick={() => handleChangeImage(item.url)}>
 					<Image
+						objectFit={'contain'}
 						className={styles.img}
-						src={'/images/product' + item.url}
+						src={'/images/product/thumbnail_' + item.url}
 						width={52}
 						height={52}
 						alt={'product'}
@@ -36,7 +37,8 @@ const Preview: NextComponentType<{}, {}, {galleries: IGallery[]}> = ({galleries}
 			<div className={styles.product__preview__right}>
 				<Image
 					className={styles.img}
-					src={'/images/product' + mainImage}
+					objectFit={'contain'}
+					src={'/images/product/small_' + mainImage}
 					width={505}
 					height={300}
 					alt={'product'}

@@ -28,7 +28,8 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 					<a className={styles.image_wrap}>
 						<Image
 							className={styles.image}
-							src={'/images/product' + product.image}
+							objectFit={'contain'}
+							src={'/images/product/' + product.image}
 							width={180}
 							height={180}
 							alt={product.name}
