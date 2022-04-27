@@ -32,8 +32,8 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 								objectFit={'contain'}
 								layout={'responsive'}
 								src={'/images/product/' + product.image}
-								width={540}
-								height={540}
+								width={180}
+								height={180}
 								alt={product.name}
 							/>
 						</div>
