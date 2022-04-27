@@ -17,10 +17,11 @@ const Preview: NextComponentType<{}, {}, {galleries: IGallery[]}> = ({galleries}
 				<div className={styles.product__thumbs__item} key={index} onClick={() => handleChangeImage(item.url)}>
 					<Image
 						objectFit={'contain'}
+						layout={'responsive'}
 						className={styles.img}
-						src={'/images/product/thumbnail_' + item.url}
-						width={52}
-						height={52}
+						src={'/images/product/small_' + item.url}
+						width={500}
+						height={440}
 						alt={'product'}
 					/>
 				</div>

@@ -26,14 +26,17 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 			<>
 				<Link href={`/product/${product.slug}`}>
 					<a className={styles.image_wrap}>
-						<Image
-							className={styles.image}
-							objectFit={'contain'}
-							src={'/images/product/' + product.image}
-							width={180}
-							height={180}
-							alt={product.name}
-						/>
+						<div className={styles.image_wrapper}>
+							<Image
+								className={styles.image}
+								objectFit={'contain'}
+								layout={'responsive'}
+								src={'/images/product/' + product.image}
+								width={540}
+								height={540}
+								alt={product.name}
+							/>
+						</div>
 					</a>
 				</Link>
 				<div className={styles.rating}>

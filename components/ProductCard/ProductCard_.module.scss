@@ -21,9 +21,7 @@
 }
 
 .image {
-  width: 180px;
-  height: 180px;
-  object-fit: contain;
+  background-color: #F7F7F7;
 
   &_wrap {
     width: 100%;
@@ -31,6 +29,13 @@
     align-items: center;
     justify-content: center;
     height: 290px;
+    background-color: #F7F7F7;
+  }
+
+  &_wrapper {
+    width: 180px;
+    height: 180px;
+    position: relative;
   }
 }
 
