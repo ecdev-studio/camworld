@@ -7,7 +7,7 @@
 
     &__left {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       padding: 20px 0 20px 0;
     }
 
@@ -18,7 +18,7 @@
       max-width: 600px;
       width: 100%;
       min-height: 480px;
-      padding: 20px;
+      padding: 20px 0 20px 20px;
       @include media(sm){
         min-height: unset;
       }
@@ -31,14 +31,15 @@
 
   &__thumbs {
     &__item {
-      width: 70px;
-      height: 70px;
+      width: 42px;
+      height: 42px;
       margin-bottom: 10px;
       background: #F7F7F7;
       display: block;
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      border: 1px solid #a2a6ac;
 
       @include media(xs) {
         height: 50px;
