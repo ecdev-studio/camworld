@@ -8,6 +8,7 @@ import BestSellers from "../components/HomePage/BestSellers/BestSellers";
 import FeaturedProducts from "../components/HomePage/FeaturedProducts/FeaturedProducts";
 import {FetchQuery} from "../hook/fetch-hooks";
 import {getCategoryQuery, getProductHomePageQuery} from "../GraphQL/Schemas"
+import Head from "next/head";
 
 type PageProps = {
   menuArray: Array<ICategory>
@@ -17,6 +18,9 @@ const Home: NextPage<PageProps> = (props) => {
 
   return (
     <Layout menuArray={props.menuArray}>
+      <Head>
+        <title>CamWorld</title>
+      </Head>
       <Banner/>
       <FeaturedProducts products={props.products}/>
       <CameraReview/>

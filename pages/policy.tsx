@@ -5,6 +5,7 @@ import { ICategory, IProduct } from '../types/data-types'
 import { NextPage } from 'next'
 import {FetchQuery} from "../hook/fetch-hooks";
 import { getCategoryQuery, getProductHomePageQuery } from '../GraphQL/Schemas'
+import Head from "next/head";
 
 
 type PageProps = {
@@ -15,6 +16,9 @@ type PageProps = {
 const TermsPage: NextPage<PageProps> = (props) => {
   return (
     <Layout menuArray={props.menuArray}>
+      <Head>
+        <title>Privacy Policy</title>
+      </Head>
       <section className={styles.section}>
         <div className={styles.inner}>
           <div className={styles.information}>
