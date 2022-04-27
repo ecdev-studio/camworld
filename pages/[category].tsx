@@ -8,9 +8,10 @@ import CategoryTop from "../components/CategoryPage/CategoryTop";
 import CategoryFilter from "../components/CategoryPage/CategoryFilter";
 import CategoryProducts from "../components/CategoryPage/CategoryProducts";
 import Pagination from "../components/CategoryPage/Pagination";
-import {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useLazyQuery} from "@apollo/client";
 import {useTypedSelector} from "../hook/useTypedSelector";
+import Head from "next/head";
 
 
 type PageProps = {
@@ -83,6 +84,9 @@ const Category: NextPage<PageProps> = (
 
 	return (
 		<Layout menuArray={menuArray}>
+			<Head>
+				<title>{currentCategory.name}</title>
+			</Head>
 			<section className={styles.section}>
 				<div className={styles.inner}>
 					<CategoryTop name={currentCategory.name}/>
