@@ -14,7 +14,7 @@ const Preview: NextComponentType<{}, {}, {galleries: IGallery[]}> = ({galleries}
 	const renderItems = (items: Array<IGallery>) =>{
 		return items.map((item, index) =>{
 			return(
-				<div className={styles.product__thumbs__item} key={index} onClick={() => handleChangeImage(item.url)}>
+				<div className={styles.product__thumbs__item} key={index} onMouseOver={() => handleChangeImage(item.url)}>
 					<Image
 						objectFit={'contain'}
 						layout={'responsive'}
