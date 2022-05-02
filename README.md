@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cam World eCommerce Platform
 
-## Getting Started
+Demo URL: [https://camworld.ecdevstudio.com/](https://camworld.ecdevstudio.com/)
 
-First, run the development server:
+Backend Repository: [https://github.com/ecdev-studio/camworld-backend](https://github.com/ecdev-studio/camworld-backend)
 
-```bash
-npm run dev
-# or
-yarn dev
+![screenshot](https://github.com/ecdev-studio/ecdev-studio.github.io/blob/main/screenshot.png)
+
+## Features
+
+- Full-featured shopping cart
+- Product reviews and ratings
+- Product sorting feature
+- Checkout process (shipping, payment method, etc)
+
+## Usage
+
+### ES Modules in Node
+
+We use ECMAScript Modules in the backend in this project. Make sure you have at least Node v14.6+ or you will need to add the "--experimental-modules" flag.
+
+Also, when importing a file (not a package), make sure you add .js at the end or you will get a "module not found" error.
+
+You can also install and setup Babel if you prefer.
+
+### Env Variables
+
+Rename a .env.sample to .env.local and supply your data
+
+### Install Dependencies and add .env
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+npm run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## License
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The MIT License
 
-## Learn More
+Copyright (c) 2021 EcDev Studio https://www.ecdevstudio.com/
 
-To learn more about Next.js, take a look at the following resources:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
