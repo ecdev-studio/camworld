@@ -19,6 +19,7 @@ const Product: NextPage<PageProps> = ({menuArray, productData}) => {
 		<Layout menuArray={menuArray}>
 			<Head>
 				<title>{productData.name}</title>
+				<meta name="robots" content="noindex"/>
 			</Head>
 			<section className={styles.product}>
 				<div className={styles.product__inner}>

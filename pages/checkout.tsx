@@ -39,6 +39,7 @@ const Checkout: NextPage<PageProps> = (props) => {
 		<Layout menuArray={props.menuArray}>
 			<Head>
 				<title>Checkout</title>
+				<meta name="robots" content="noindex"/>
 			</Head>
 			<section>
 				<CheckoutSteps step={step} changeStep={changeStep} />

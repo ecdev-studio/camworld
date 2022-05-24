@@ -20,6 +20,7 @@ const Home: NextPage<PageProps> = (props) => {
     <Layout menuArray={props.menuArray}>
       <Head>
         <title>CamWorld</title>
+        <meta name="robots" content="noindex"/>
       </Head>
       <Banner/>
       <FeaturedProducts products={props.products}/>

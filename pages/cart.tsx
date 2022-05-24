@@ -17,6 +17,7 @@ const Cart: NextPage<PageProps> = (props) => {
 		<Layout menuArray={props.menuArray}>
 			<Head>
 				<title>Cart</title>
+				<meta name="robots" content="noindex"/>
 			</Head>
 			<section className={styles.cart}>
 				<div className={styles.cart__inner}>
