@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Image from "next/image";
 import {changeQuantity} from "../../store/action-creator/global-action-creator";
 import {store} from "../../store";
-import {useMemo} from "react";
 
 
 const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}) => {
@@ -21,7 +20,6 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 		}
 		store.dispatch(changeQuantity(item, 1))
 	}
-	return useMemo(() => {
 		return (
 			<>
 				<Link href={`/product/${product.slug}`}>
@@ -42,7 +40,7 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 				<div className={styles.rating}>
 					<Rating value={product.rating} text={`${product.numReviews}`} hideCountReviewers={false}/>
 				</div>
-				<Link href={product.slug}>
+				<Link href={`/product/${product.slug}`}>
 					<a><h6 className={styles.title}>{product.name}</h6></a>
 				</Link>
 				<div className={styles.bottom}>
@@ -56,7 +54,6 @@ const ProductCard: NextComponentType<{}, {}, { product: IProduct }> = ({product}
 				</div>
 			</>
 		)
-	}, [product.slug, product.image, product.slug, product.name, product.price, product.id, product])
 }
 
 export default ProductCard

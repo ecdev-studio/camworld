@@ -139,9 +139,11 @@ const CategoryFilter: NextComponentType<{}, {}, { minPrice: number, maxPrice: nu
 				</div>
 			</div>
 			{category && category.taxonomies && category.taxonomies.length > 0 && category.taxonomies.map((item) => {
-				return (
-					<FilterItem item={item} key={item.id}/>
-				)
+				if (item.subTaxonomies.length > 0) {
+					return (
+						<FilterItem item={item} key={item.id}/>
+					)
+				}
 			})}
 		</div>
 	);
