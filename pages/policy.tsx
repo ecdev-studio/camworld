@@ -18,6 +18,7 @@ const TermsPage: NextPage<PageProps> = (props) => {
     <Layout menuArray={props.menuArray}>
       <Head>
         <title>Privacy Policy</title>
+        <meta name="robots" content="noindex"/>
       </Head>
       <section className={styles.section}>
         <div className={styles.inner}>

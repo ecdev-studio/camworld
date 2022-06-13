@@ -86,6 +86,7 @@ const Category: NextPage<PageProps> = (
 		<Layout menuArray={menuArray}>
 			<Head>
 				<title>{currentCategory.name}</title>
+				<meta name="robots" content="noindex"/>
 			</Head>
 			<section className={styles.section}>
 				<div className={styles.inner}>
