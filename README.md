@@ -45,6 +45,8 @@ The MIT License
 
 Copyright (c) 2021 EcDev Studio https://www.ecdevstudio.com/
 
+Hire web developers on same stack (React, Node.js): https://www.ecdevstudio.com/hire-react-developers/
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
