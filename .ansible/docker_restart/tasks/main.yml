@@ -6,7 +6,7 @@
     source: build
     build:
       path: "{{ dir }}"
-      dockerfile: .docker/Dockerfile
+      dockerfile: Dockerfile
 
 - name: Restart Docker container
   community.docker.docker_container:
