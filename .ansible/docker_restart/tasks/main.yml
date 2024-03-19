@@ -1,0 +1,20 @@
+- name: Build Docker image
+  community.docker.docker_image:
+    name: app_image
+    state: present
+    force_source: yes
+    source: build
+    build:
+      path: "{{ dir }}"
+      dockerfile: .docker/Dockerfile
+
+- name: Restart Docker container
+  community.docker.docker_container:
+    name: app
+    image: app_image
+    restart: yes
+    recreate: yes
+    ports:
+      - "3000:3000"
+    env:
+      NODE_ENV: "{{ NODE_ENV }}"
