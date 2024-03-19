@@ -23,11 +23,7 @@ Also, when importing a file (not a package), make sure you add .js at the end or
 
 You can also install and setup Babel if you prefer.
 
-### Env Variables
-
-Rename a .env.sample to .env.local and supply your data
-
-### Install Dependencies and add .env
+### Install Dependencies
 
 ```
 npm install
