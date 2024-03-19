@@ -1,13 +1,13 @@
 FROM node:latest
 
-RUN mkdir -p /aws/app/camworld.ecdevstudio.com
-WORKDIR /aws/app/camworld.ecdevstudio.com
+RUN mkdir -p /aws/camworld.ecdevstudio.com
+WORKDIR /aws/camworld.ecdevstudio.com
 
-COPY ./app/package*.json ./
+COPY package*.json ./
 
 RUN npm ci --silent
 
-COPY ./app .
+COPY . .
 
 RUN npm run build
 
