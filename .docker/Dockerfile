@@ -1,28 +1,16 @@
-FROM 868285727925.dkr.ecr.us-west-1.amazonaws.com/node:16-alpine3.12
+FROM node:latest
 
-WORKDIR /usr/src/app
+RUN mkdir -p /var/www/camworld.ecdevstudio.com
+WORKDIR /var/www/camworld.ecdevstudio.com
 
-COPY package*.json ./
+COPY ./app/package*.json ./
 
-RUN npm install
+RUN npm ci --silent
 
-COPY .. .
+COPY ./app .
 
 RUN npm run build
 
+EXPOSE 5555/tcp
+
 CMD ["npm", "start"]
-
-FROM node:latest
-
-RUN mkdir -p /aws/app/camworld-next
-WORKDIR /aws/app/camworld-next
-
-COPY package*.json ./
-
-COPY ../app ./app/
-
-RUN npm i
-
-EXPOSE 3000/tcp
-
-CMD ["npm", "run", "dev"]

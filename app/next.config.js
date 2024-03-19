@@ -6,6 +6,9 @@ const nextConfig = {
     path: '/',
     domains: ['http://localhost:3000/'],
   },
+  env: {
+    BACKEND: `https://backend.ecdevstudio.com/graphql`
+  }
 }
 
 module.exports = nextConfig
