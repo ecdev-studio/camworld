@@ -1,7 +1,7 @@
 FROM node:latest
 
-RUN mkdir -p /var/www/camworld.ecdevstudio.com
-WORKDIR /var/www/camworld.ecdevstudio.com
+RUN mkdir -p /aws/app/camworld.ecdevstudio.com
+WORKDIR /aws/app/camworld.ecdevstudio.com
 
 COPY ./app/package*.json ./
 
