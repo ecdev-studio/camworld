@@ -25,5 +25,5 @@ jobs:
           options: |
             -e GITHUB_REPO=${{ github.repository }}
             -e NODE_ENV=production
-            -e APP_PATH=/aws/app/camworld.ecdevstudio.com
+            -e APP_PATH=/home/ubuntu/apps/aws/camworld.ecdevstudio.com
             -e PORT=5555
