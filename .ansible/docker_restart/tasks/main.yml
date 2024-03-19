@@ -10,8 +10,8 @@
 
 - name: Restart Docker container
   community.docker.docker_container:
-    name: app
-    image: camworld_next
+    name: camworld_next
+    image: camworld_next-container
     restart: yes
     recreate: yes
     ports:
