@@ -1,6 +1,6 @@
 - name: Build Node.js app
   hosts: all
-  remote_user: ubuntu
+  remote_user: root
   vars:
     dir: "{{ APP_PATH }}"
     ansible_python_interpreter: /usr/bin/python3
