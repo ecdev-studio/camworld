@@ -19,7 +19,7 @@ const Preview: NextComponentType<{}, {}, {galleries: IGallery[]}> = ({galleries}
 						objectFit={'contain'}
 						layout={'responsive'}
 						className={styles.img}
-						src={'/images/product/small_' + item.url}
+						src={'/images/product/' + item.url}
 						width={500}
 						height={440}
 						alt={'product'}
@@ -39,7 +39,7 @@ const Preview: NextComponentType<{}, {}, {galleries: IGallery[]}> = ({galleries}
 				<Image
 					className={styles.img}
 					objectFit={'contain'}
-					src={'/images/product/small_' + mainImage}
+					src={'/images/product/' + mainImage}
 					width={505}
 					height={300}
 					alt={'product'}

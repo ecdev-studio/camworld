@@ -52,7 +52,7 @@ const CartContent: NextComponentType<{}, {}, {}> = () => {
 											<a className={styles.cart__product__item__image_wrap}>
 												<Image
 													className={styles.cart__product__item__image}
-													src={'/images/product' + product.image}
+													src={'/images/product/' + product.image}
 													width={180}
 													height={180}
 													alt={product.name}

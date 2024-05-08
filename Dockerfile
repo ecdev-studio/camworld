@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:16-alpine3.12
 
 RUN mkdir -p /app/camworld.ecdevstudio.com
 WORKDIR /app/camworld.ecdevstudio.com
