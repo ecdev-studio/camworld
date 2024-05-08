@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     loader: 'akamai',
     path: '/',
-    domains: ['http://localhost:3000/'],
+    domains: ['http://localhost:3000/', 'http://localhost:5555/'],
   },
   env: {
     BACKEND: `https://backend.ecdevstudio.com/graphql`
